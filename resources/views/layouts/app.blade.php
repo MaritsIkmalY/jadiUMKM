@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +29,7 @@
         @endif
 
         <!-- Page Content -->
-        <main class="max-w-7xl w-full m-auto p-4">
+        <main class="max-w-7xl w-full m-auto p-4 bg-gray-50 text-black">
             {{ $slot }}
         </main>
     </div>

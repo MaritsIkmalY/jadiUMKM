@@ -16,7 +16,7 @@ class VideosSeeder extends Seeder
         DB::table('videos')->insert([
             [
                 'link' => 'https://www.youtube.com/embed/SoCuPpCFj7Y',
-                'title' => 'Laravel Controller',
+                'title' => 'Laravel Controller dengan cara memburu babi hutan',
                 'subtitle' => 'Bermain',
                 'is_subscribe' => false,
             ],
