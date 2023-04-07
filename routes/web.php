@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Edukasi\Video\VideoController;
+use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/edukasi', [EdukasiController::class, 'index'])->name('edukasi');
+Route::get('/edukasi/videos', [VideoController::class, 'index'])->name('videos.free');
+
+
+require __DIR__ . '/auth.php';
