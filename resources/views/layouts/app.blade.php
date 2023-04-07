@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
 
 <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/function.js'])
 </head>
 
 <body class="font-sans antialiased">
@@ -30,7 +30,7 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="max-w-7xl w-full m-auto p-4">
             {{ $slot }}
         </main>
     </div>

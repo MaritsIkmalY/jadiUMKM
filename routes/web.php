@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Edukasi\Video\VideoController;
 use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\Edukasi\WebinarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/edukasi', [EdukasiController::class, 'index'])->name('edukasi');
 Route::get('/edukasi/videos', [VideoController::class, 'index'])->name('videos.free');
+Route::get('/edukasi/webinar', [WebinarController::class, 'index'])->name('webinar.index');
 
 
 require __DIR__ . '/auth.php';
