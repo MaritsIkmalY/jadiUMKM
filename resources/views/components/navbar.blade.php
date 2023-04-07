@@ -5,7 +5,7 @@
         </div>
         <div class="flex gap-4">
             @if (Auth::user())
-                <div class="dropdown dropdown-hover">
+                <div class="dropdown dropdown-hover dropdown-end">
                     <label tabindex="0" class="btn btn-ghost text-primary m-1">{{ Auth::user()->name }}</label>
                     <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li> <a href="{{ route('dashboard') }}">Dashboard</a></li>
