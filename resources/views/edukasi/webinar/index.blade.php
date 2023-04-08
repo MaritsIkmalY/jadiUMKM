@@ -1,47 +1,36 @@
 <x-app-layout>
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="text-center text-2xl mb-4">Webinar yang akan datang</div>
-    <div class="grid grid-cols-3 gap-4 justify-center items-center">
+    @if (Auth::user()->role_id == 3)
+        <a href="{{ route('webinar.create') }}" class="btn btn-primary btn-xs my-5">Tambahkan</a>
+    @endif
+
+    <div class="lg:grid grid-cols-3 gap-4 justify-center items-center">
         @foreach ($webinar as $item)
-            <div class="card card-compact bg-base-100 shadow-xl h-96">
-                <figure><img src={{ $item->photo }} alt="{{ $item->title }}" /></figure>
+            <div class="card card-compact bg-base-100 shadow-xl lg:h-96">
+                <figure><img src="/storage/{{ $item->photo }}" alt="{{ $item->title }}" /></figure>
                 <div class="card-body gap-4">
                     <h2 class="card-title">{{ $item->title }}</h2>
                     <div class="flex justify-between">
-
                         <p>{{ $item->description }}</p>
                         <div class="badge badge-secondary">Gratis</div>
                     </div>
-                    <div class="flex items-center">
-                        <div class="flex flex-col items-center">
-                            <div class="hari">1</div>
-                            <div>Hari</div>
-                        </div>
-                        <div class="divider lg:divider-horizontal"></div>
-                        <div class="flex flex-col items-center">
-                            <div class="jam">1</div>
-                            <div>Jam</div>
-                        </div>
-                        <div class="divider lg:divider-horizontal"></div>
-                        <div class="flex flex-col items-center">
-                            <div class="menit">1</div>
-                            <div>Menit</div>
-                        </div>
-                        <div class="divider lg:divider-horizontal"></div>
-                        <div class="flex flex-col items-center">
-                            <div class="detik">1</div>
-                            <div>Detik</div>
-                        </div>
-                    </div>
-
-
-                    <button class="btn btn-primary w-full">Ikut Webinar</button>
+                    <a class="btn btn-primary w-full" href="{{ $item->link }}" target="_blank">Ikut Webinar</a>
+                    @if (Auth::user()->role_id == 3)
+                        <a class="btn btn-secondary w-full" href="{{ route('webinar.edit', $item->id) }}">Edit</a>
+                        <a class="btn btn-danger w-full" href="{{ route('webinar.destroy', $item->id) }}">Hapus</a>
+                    @endif
                 </div>
             </div>
         @endforeach
     </div>
 </x-app-layout>
 
-<script>
+{{-- <script>
     function hitungWaktu(endTime) {
         var endDate = new Date(endTime).getTime();
 
@@ -90,4 +79,4 @@
         }, 1000);
     }
     hitungWaktu("2023-04-19T12:00:00"); // Menghitung mundur waktu hingga tanggal 8 April 2023 pukul 12:00:00
-</script>
+</script> --}}

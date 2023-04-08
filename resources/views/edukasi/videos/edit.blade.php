@@ -1,5 +1,10 @@
 <x-app-layout>
     <div class="container ">
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+        @endif
         <div class="m-5">
             <h1 class="text-center font-bold">Formulir</h1>
         </div>

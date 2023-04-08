@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\Edukasi\Video\VideoController;
 use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\Edukasi\WebinarController;
+use App\Http\Controllers\Admin\Edukasi\Webinar\WebinarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,11 +33,17 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/edukasi', [EdukasiController::class, 'index'])->name('edukasi');
 Route::get('/edukasi/videos', [VideoController::class, 'index'])->name('videos.index');
-Route::get('/edukasi/webinar', [WebinarController::class, 'index'])->name('webinar.index');
 Route::get('/admin/edukasi/videos', [VideoController::class, 'create'])->name('videos.create');
 Route::post('/admin/edukasi/videos', [VideoController::class, 'store'])->name('videos.store');
 Route::get('/admin/edukasi/videos/{id}', [VideoController::class, 'edit'])->name('videos.edit');
 Route::put('/admin/edukasi/videos/update/{id}', [VideoController::class, 'update'])->name('videos.update');
 Route::get('/admin/edukasi/videos/delete/{id}', [VideoController::class, 'destroy'])->name('videos.destroy');
+
+Route::get('/edukasi/webinar', [WebinarController::class, 'index'])->name('webinar.index');
+Route::get('/admin/edukasi/webinar', [WebinarController::class, 'create'])->name('webinar.create');
+Route::post('/admin/edukasi/webinar', [WebinarController::class, 'store'])->name('webinar.store');
+Route::get('/admin/edukasi/webinar/{id}', [WebinarController::class, 'edit'])->name('webinar.edit');
+Route::put('/admin/edukasi/webinar/update/{id}', [WebinarController::class, 'update'])->name('webinar.update');
+Route::get('/admin/edukasi/webinar/delete/{id}', [WebinarController::class, 'destroy'])->name('webinar.destroy');
 
 require __DIR__ . '/auth.php';
