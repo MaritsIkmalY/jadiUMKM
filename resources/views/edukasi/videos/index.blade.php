@@ -1,7 +1,15 @@
 <x-app-layout>
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="container py-5 max-w-2xl px-6 m-auto bg-white min-h-screen">
-        <div class="m-5">
+        <div class="m-5 flex justify-between">
             <h1 class="text-start font-bold">Video Pembelajaran</h1>
+            @if (Auth::user()->role_id == 3)
+                <a href="{{ route('videos.create') }}" class="btn btn-primary btn-sm">Tambah</a>
+            @endif
         </div>
         <div class="divider"></div>
         <div class="overflow-x-auto">
@@ -16,6 +24,17 @@
                             <td class="border-b-2">
                                 <label for="{{ $video->id }}" class="btn btn-primary btn-xs mx-5">Tonton</label>
                             </td>
+                            @if (Auth::user()->role_id == 3)
+                                <td class="border-b-2">
+                                    <a href="/admin/edukasi/videos/{{ $video->id }}"
+                                        class="btn btn-primary btn-xs">Edit</a>
+                                </td>
+                                <td class="border-b-2">
+                                    <a href="{{ route('videos.destroy', $video->id) }}"
+                                        class="btn btn-primary btn-xs">Hapus</a>
+                                </td>
+                            @endif
+
                         </tr>
                     </tbody>
                     <input type="checkbox" id="{{ $video->id }}" class="modal-toggle" />

@@ -6,7 +6,7 @@
                 <h2 class="card-title">Pembelajaran</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div class="card-actions justify-end">
-                    <button class="btn btn-primary"><a href="{{ route('videos.free') }}">Lihat Pembelajaran</a></button>
+                    <button class="btn btn-primary"><a href="{{ route('videos.index') }}">Lihat Pembelajaran</a></button>
                 </div>
             </div>
         </div>
