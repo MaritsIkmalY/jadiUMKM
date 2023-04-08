@@ -26,7 +26,7 @@
                             </td>
                             @if (Auth::user()->role_id == 3)
                                 <td class="border-b-2">
-                                    <a href="/admin/edukasi/videos/{{ $video->id }}"
+                                    <a href="{{ route('videos.edit', $video->id) }}"
                                         class="btn btn-primary btn-xs">Edit</a>
                                 </td>
                                 <td class="border-b-2">

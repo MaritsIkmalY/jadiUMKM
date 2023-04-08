@@ -19,17 +19,17 @@ class WebinarSeeder extends Seeder
                 [
                     'title' => 'Webinar Frontend',
                     'description' => 'Webinar khusus anak front end',
-                    'photo' => '/assets/images/frontend.jpg',
+                    'photo' => 'assets/images/frontend.jpg',
                 ],
                 [
                     'title' => 'Webinar Mackend',
                     'description' => 'Webinar khusus anak back end',
-                    'photo' => '/assets/images/backend_3.jpg',
+                    'photo' => 'assets/images/backend_3.jpg',
                 ],
                 [
                     'title' => 'Webinar Mobile',
                     'description' => 'Webinar khusus anak mobile',
-                    'photo' => '/assets/images/mobile.png',
+                    'photo' => 'assets/images/mobile.png',
                 ]
             ]
         );
