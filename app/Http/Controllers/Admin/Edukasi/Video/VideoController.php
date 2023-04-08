@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin\Edukasi\Video;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Edukasi\Video\VideoRequest;
 use App\Models\Video;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class VideoController extends Controller
 {
@@ -22,15 +25,18 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('edukasi.videos.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(VideoRequest $request)
     {
-        //
+        $data = $request->validated();
+        Video::newVideo($data);
+
+        return redirect()->route('videos.index')->with('success', 'Video berhasil ditambahkan');
     }
 
     /**
@@ -46,15 +52,21 @@ class VideoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $video = Video::getVideoById($id);
+        return view('edukasi.videos.edit', compact('video'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(VideoRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $video = Video::getVideoById($id);
+        if ($video) {
+            $video->update($data);
+        }
+        return redirect()->route('videos.index')->with('success', 'Video berhasil diperbarui');
     }
 
     /**
@@ -62,6 +74,8 @@ class VideoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $video = Video::getVideoById($id);
+        $video->delete();
+        return redirect()->route('videos.index')->with('success', 'Video berhasil dihapus');
     }
 }
