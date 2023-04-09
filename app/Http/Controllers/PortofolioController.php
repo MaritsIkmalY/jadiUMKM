@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PortofolioController extends Controller
 {
@@ -38,6 +39,13 @@ class PortofolioController extends Controller
     public function store(PortoRequest $portoRequest)
     {
         $validatedData = $portoRequest->validated();
+        if ($portoRequest->file('photo')) {
+            $filename = $portoRequest->file('photo')->getClientOriginalName() . Auth::user()->email . '.' . $portoRequest->file('photo')->getClientOriginalExtension();
+            $path = $portoRequest->file('photo')->storeAs('/assets/images', $filename, 'public');
+
+            $validatedData['photo'] = $path;
+        }
+
         $creator = User::getCreatorId(Auth::user()->id);
         $validatedData['creator_id'] = $creator->id;
         $validatedData['description'] = strip_tags($portoRequest->description);
@@ -71,6 +79,15 @@ class PortofolioController extends Controller
     public function update(PortoRequest $request, string $id)
     {
         $validatedData = $request->validated();
+        if ($request->file('photo')) {
+            $filename = $request->file('photo')->getClientOriginalName() . Auth::user()->email . '.' . $request->file('photo')->getClientOriginalExtension();
+            $path = $request->file('photo')->storeAs('/assets/images', $filename, 'public');
+            if (!is_null($request->user()->photo)) {
+                Storage::disk('public')->delete($request->user()->photo);
+            }
+            $validatedData['photo'] = $path;
+        }
+
         $validatedData['description'] = strip_tags($request->description);
 
         ContentCreatorPortofolio::where('id', $id)->update($validatedData);

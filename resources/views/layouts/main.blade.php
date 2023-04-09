@@ -14,7 +14,6 @@
     @vite([
         'resources/css/app.css',
         'resources/js/app.js',
-        'resources/css/app.css',
         'resources/css/style.css',
         'resources/css/plugins/pe-icon-7-stroke.css',
         'resources/css/plugins/font-awesome.min.css',
@@ -37,9 +36,7 @@
         'resources/js/plugins/ion.rangeSlider.min.js',
         'resources/js/plugins/jquery.zoom.min.js',
         'resources/js/main.js',
-        'resources/images/logo-jadiUMKM.png',
-        'resources/images/slider/slider1.png',
-        'resources/images/'
+        //
     ])
     <title>JadiUMKM</title>
 </head>
@@ -47,7 +44,7 @@
 <body>
     <x-navbar />
 
-        {{ $slot }}
+    {{ $slot }}
 
 </body>
 
