@@ -10,6 +10,8 @@ class ContentCreatorPortofolio extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function creator(): BelongsTo
     {
         return $this->belongsTo(ContentCreator::class, 'creator_id');
