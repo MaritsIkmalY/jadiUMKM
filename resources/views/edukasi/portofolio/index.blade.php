@@ -5,11 +5,10 @@
 
     <div class="grid  grid-cols-1 sm:grid-cols-3 justify-center gap-4 mt-4">
         @foreach ($portofolios as $item)
-        <div class="card card-compact bg-base-100 shadow-xl">
-                <figure><img src="/storage/{{ $item->photo }}" alt="Shoes" /></figure>
+            <div class="card card-compact bg-base-100 shadow-xl">
+                <figure><img src="/storage/{{ $item->photo }}" alt="Shoes" class="h-96" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">{{ $item->title }}</h2>
-                    <p>{{ $item->description }}</p>
                     <div class="card-actions justify-end items-center">
 
                         <a href={{ route('portofolio.edit', $item->id) }} class="btn btn-primary">Edit</a>

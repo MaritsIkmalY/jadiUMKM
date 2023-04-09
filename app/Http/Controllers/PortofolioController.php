@@ -48,7 +48,6 @@ class PortofolioController extends Controller
 
         $creator = User::getCreatorId(Auth::user()->id);
         $validatedData['creator_id'] = $creator->id;
-        $validatedData['description'] = strip_tags($portoRequest->description);
 
         ContentCreatorPortofolio::create($validatedData);
 
@@ -87,8 +86,6 @@ class PortofolioController extends Controller
             }
             $validatedData['photo'] = $path;
         }
-
-        $validatedData['description'] = strip_tags($request->description);
 
         ContentCreatorPortofolio::where('id', $id)->update($validatedData);
 
