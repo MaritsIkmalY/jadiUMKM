@@ -23,6 +23,18 @@
                     </x-nav-link>
                 </div>
 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link>
+                        {{ __('Keahlian') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link>
+                        {{ __('Edukasi') }}
+                    </x-nav-link>
+                </div>
+
                 @if (Auth::user()->role_id == 2)
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('portofolio.index')" :active="request()->routeIs('portofolio.index')">
