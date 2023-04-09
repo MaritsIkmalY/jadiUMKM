@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +14,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/function.js'])
+
+    <x-head.tinymce-config/>
 </head>
 
 <body class="font-sans antialiased">
@@ -33,6 +36,19 @@
             {{ $slot }}
         </main>
     </div>
+
+    <script>
+        var openFile = function(file) {
+            var input = file.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('output');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
+    </script>
 </body>
 
 </html>

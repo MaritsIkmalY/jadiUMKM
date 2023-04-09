@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('creator_id');
             $table->string('title');
-            $table->text('description');
-            $table->string('photo');
+            $table->text('description')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
 
             $table->foreign('creator_id')->references('id')->on('content_creators');

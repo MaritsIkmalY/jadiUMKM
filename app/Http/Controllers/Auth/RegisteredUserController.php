@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContentCreator;
 use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -36,7 +37,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -46,6 +47,12 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if ($user->role_id == 2) {
+            ContentCreator::create([
+                'user_id' => $user->id,
+            ]);
+        };
 
         event(new Registered($user));
 
