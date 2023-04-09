@@ -1,6 +1,6 @@
 <x-main-layout>
 
-    <div class="menu-overlay"></div>
+    <div class="menu-overlay mt-6"></div>
 
     <!-- Slider Section Start -->
     <div class="section slider-section">
