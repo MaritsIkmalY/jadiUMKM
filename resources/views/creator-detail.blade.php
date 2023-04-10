@@ -156,6 +156,11 @@
             </div>
             <div class="flex gap-4 flex-col my-2">
                 {{ $creator->user->address }}
+                <div class="flex flex-wrap gap-4 items-center">
+                    @foreach ($creator->skill as $skill)
+                        <div class="badge badge-primary">{{ $skill->name }}</div>
+                    @endforeach
+                </div>
                 <a target="_blank" href="https://wa.me/{{ $creator->user->phone }}" class="btn btn-primary">Chat dan
                     Negosiasi</a>
             </div>

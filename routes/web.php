@@ -25,11 +25,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'home'])->name('home');
 Route::get('/landing/edukasi/video', [LandingController::class, 'video'])->name('video');
+
 Route::get('/landing/creator', [LandingController::class, 'creator'])->name('creator');
 Route::get('/landing/edukasi', [LandingController::class, 'edukasi'])->name('edukasi');
 Route::get('/landing/edukasi/webinar', [LandingController::class, 'webinar'])->name('webinar');
 Route::get('/landing/creator/detail/{id}', [LandingController::class, 'creatorDetail'])->name('creator.detail');
 Route::get('/landing/creator/filter', [FilterController::class, 'getCreatorByFilter'])->name('filter');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

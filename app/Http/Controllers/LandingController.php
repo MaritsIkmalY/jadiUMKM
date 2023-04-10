@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContentCreator;
 use App\Models\ContentCreatorCategory;
 use App\Models\Video;
+use App\Models\Webinar;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -38,5 +39,10 @@ class LandingController extends Controller
     {
         $creator = ContentCreator::find($id);
         return view('creator-detail', compact('creator'));
+    }
+    
+    public function webinar() {
+        $webinar = Webinar::all();
+        return view('webinar', compact('webinar'));
     }
 }
