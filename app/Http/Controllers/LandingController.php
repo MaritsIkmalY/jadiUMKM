@@ -23,4 +23,10 @@ class LandingController extends Controller
         $creators = ContentCreator::all();
         return view('creator', compact('creators'));
     }
+
+    public function creatorDetail(String $id) {
+        $creator = ContentCreator::find($id);
+        return view('creator-detail', compact('creator'));
+
+    }
 }

@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingController::class, 'home'])->name('home');
 Route::get('/video', [LandingController::class, 'video'])->name('video');
 Route::get('/creator', [LandingController::class, 'creator'])->name('creator');
+Route::get('/creator/landing/detail/{id}', [LandingController::class, 'creatorDetail'])->name('creator.detail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
