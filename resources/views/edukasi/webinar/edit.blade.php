@@ -22,8 +22,7 @@
                 <label class="label">
                     <span class="label-text">Deskripsi</span>
                 </label>
-                <input type="text" value="{{ $webinar->description }}" class="input input-bordered w-full max-w-xs"
-                    name='description' />
+                <textarea class="textarea textarea-bordered" placeholder="Deskripsi" name="description">{{ $webinar->description }}</textarea>
             </div>
             <div class="form-control w-full max-w-xs m-auto">
                 <label class="label">
@@ -36,7 +35,9 @@
                 <label class="label">
                     <span class="label-text">Poster</span>
                 </label>
-                <input type="file" class="file-input file-input-bordered file-input-primary" name="photo" />
+                <img id="output" src="/storage/{{ $webinar->photo }}" class="my-2">
+                <input type="file" class="file-input file-input-bordered file-input-primary" name="photo"
+                    accept="image/*" onchange="openFile(event)" />
             </div>
             <div class="my-5"></div>
             <button type="submit" class="btn btn-primary btn-sm m-auto flex">Perbarui</button>

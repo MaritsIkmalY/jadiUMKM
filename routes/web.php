@@ -65,5 +65,11 @@ Route::get('/creator/pendidikan/{id}', [PendidikanController::class, 'edit'])->n
 Route::put('/creator/pendidikan/update/{id}', [PendidikanController::class, 'update'])->name('pendidikan.update');
 Route::get('/creator/pendidikan/delete/{id}', [PendidikanController::class, 'destroy'])->name('pendidikan.destroy');
 
+Route::get('/creator/category', [CategoryController::class, 'index'])->name('kategori');
+Route::post('/creator/category/create', [CategoryController::class, 'store'])->name('kategori.store');
+Route::get('/creator/category/{id}', [CategoryController::class, 'edit'])->name('kategori.edit');
+Route::put('/creator/category/update/{id}', [CategoryController::class, 'update'])->name('kategori.update');
+Route::get('/creator/category/delete/{id}', [CategoryController::class, 'destroy'])->name('kategori.destroy');
+
 
 require __DIR__ . '/auth.php';
