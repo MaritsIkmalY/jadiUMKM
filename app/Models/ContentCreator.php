@@ -23,9 +23,9 @@ class ContentCreator extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function category(): BelongsTo
+    public function category(): HasMany
     {
-        return $this->belongsTo(ContentCreatorCategory::class, 'category_id');
+        return $this->hasMany(HasCategory::class, 'creator_id');
     }
 
     public function portofolio(): HasMany 
