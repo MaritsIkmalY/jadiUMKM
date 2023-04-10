@@ -1,9 +1,9 @@
 <x-main-layout>
 
-    <div class="menu-overlay mt-6"></div>
+    <div class="menu-overlay"></div>
 
     <!-- Slider Section Start -->
-    <div class="section slider-section">
+    <div class="section slider-section lg:pt-32">
 
         <div class="slider-shape"></div>
 

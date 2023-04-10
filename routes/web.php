@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Edukasi\Webinar\WebinarController;
 use App\Http\Controllers\Creator\PortofolioController;
-use App\Http\Controllers\Creator\SkillController
+use App\Http\Controllers\Creator\SkillController;
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing-page');
 });
 
 Route::get('/dashboard', function () {
