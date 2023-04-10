@@ -8,6 +8,7 @@ use App\Http\Controllers\Creator\Kategori\CategoryController;
 use App\Http\Controllers\Creator\PortofolioController;
 use App\Http\Controllers\Creator\SkillController;
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +25,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'home'])->name('home');
 Route::get('/landing/edukasi/video', [LandingController::class, 'video'])->name('video');
-Route::get('/landing/webinar', [LandingController::class, 'webinar'])->name('webinar');
+
 Route::get('/landing/creator', [LandingController::class, 'creator'])->name('creator');
+Route::get('/landing/edukasi', [LandingController::class, 'edukasi'])->name('edukasi');
+Route::get('/landing/edukasi/webinar', [LandingController::class, 'webinar'])->name('webinar');
 Route::get('/landing/creator/detail/{id}', [LandingController::class, 'creatorDetail'])->name('creator.detail');
+Route::get('/landing/creator/filter', [FilterController::class, 'getCreatorByFilter'])->name('filter');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -37,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/edukasi', [EdukasiController::class, 'index'])->name('edukasi');
+    Route::get('/edukasi/login', [EdukasiController::class, 'index'])->name('edukasi.index');
     Route::get('/edukasi/videos', [VideoController::class, 'index'])->name('videos.index');
     Route::get('/edukasi/webinar', [WebinarController::class, 'index'])->name('webinar.index');
 });

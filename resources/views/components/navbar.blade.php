@@ -1,14 +1,15 @@
 <div class="navbar bg-base-100 drop-shadow-sm p-4">
     <div class="max-w-7xl w-full m-auto">
         <div class="flex-1">
-            <a class="btn btn-ghost normal-case text-xl">JadiUMKM</a>
+            <a class="btn btn-ghost normal-case text-xl"><img src="/assets/images/logo.png" alt="jadiUMKM"
+                    class="w-32"></a>
         </div>
         <div class="flex gap-16">
             <ul class="menu menu-horizontal px-1 z-99">
                 <li><a href="{{ route('home') }}">Home</a></li>
                 <li tabindex="0">
                     <a>
-                        Edukasi
+                        <a href="{{ route('edukasi') }}">Edukasi</a>
                         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24">
                             <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />

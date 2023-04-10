@@ -1,6 +1,14 @@
 <x-main-layout>
     <h1>Content Creator</h1>
-
+    <div>
+        <form action="{{ route('filter') }}" method="get">
+            @csrf
+            <button class="btn btn-primary" value="0" name="id">semua</button>
+            @foreach ($categories as $category)
+                <button value="{{ $category->id }}" class="btn btn-primary" name="id">{{ $category->name }}</button>
+            @endforeach
+        </form>
+    </div>
     <div class="grid grid-cols-3 justify-center gap-4 mt-24">
         @foreach ($creators as $creator)
             <a href="{{ route('creator.detail', $creator->id) }}" class="card bg-base-100 shadow-xl">
@@ -8,7 +16,7 @@
                     @if (!is_null($creator->user->photo))
                         <img src="/storage/{{ $creator->user->photo }}" class="h-96" alt="Shoes" />
                     @else
-                        <img src="assets/images/webinar.jpg" class="h-96" alt="profile" />
+                        <img src="/assets/images/webinar.jpg" class="h-96" alt="profile" />
                     @endif
                 </figure>
 
