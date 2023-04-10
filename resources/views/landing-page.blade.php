@@ -6,7 +6,8 @@
                 <h1 class="text-5xl font-bold text-center sm:text-7xl sm:text-left">jadiUMKM</h1>
                 <p class="py-6 font-bold text-2xl">Learn. Grow. Thrive.
                 </p>
-                <a class="btn border-none hover:text-white sm:content-center" href="{{route('login')}}">Get Started</a>
+                <a class="btn border-none hover:text-white sm:content-center" href="{{ route('register') }}">Get
+                    Started</a>
             </div>
         </div>
     </div>
@@ -86,14 +87,15 @@
             <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
                 <div
                     class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-black sm:grid-cols-2 md:flex lg:gap-x-10">
-                    <a href="{{route('video')}}">Pembelajaran <span aria-hidden="true">&rarr;</span></a>
+                    <a href="{{ route('video') }}">Pembelajaran <span aria-hidden="true">&rarr;</span></a>
 
-                    <a href="https://t.me/+BielMi-IEV5mOGQ1" target="_blank">Pembelajaran Premium<span aria-hidden="true">&rarr;</span></a>
+                    <a href="https://t.me/+BielMi-IEV5mOGQ1" target="_blank">Pembelajaran Premium<span
+                            aria-hidden="true">&rarr;</span></a>
 
-                    <a href="{{route('webinar')}}">Webinar <span aria-hidden="true">&rarr;</span></a>
+                    <a href="{{ route('webinar') }}">Webinar <span aria-hidden="true">&rarr;</span></a>
 
-                    <a href="{{route('creator')}}">Content Creator <span aria-hidden="true">&rarr;</span></a>
-                    
+                    <a href="{{ route('creator') }}">Content Creator <span aria-hidden="true">&rarr;</span></a>
+
                 </div>
             </div>
         </div>
