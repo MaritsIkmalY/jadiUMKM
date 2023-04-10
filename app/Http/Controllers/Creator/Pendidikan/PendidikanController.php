@@ -14,7 +14,7 @@ class PendidikanController extends Controller
      */
     public function index()
     {
-        $pendidikan = ContentCreatorEducation::getAllEducation();
+        $pendidikan = ContentCreatorEducation::getCreatorEducation();
         return view('creator.pendidikan.index', compact('pendidikan'));
     }
 

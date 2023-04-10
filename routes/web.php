@@ -4,8 +4,10 @@ use App\Http\Controllers\Admin\Edukasi\Video\VideoController;
 use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Edukasi\Webinar\WebinarController;
+use App\Http\Controllers\Creator\Kategori\CategoryController;
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
 use App\Http\Controllers\PortofolioController;
+use App\Models\ContentCreatorCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,6 +64,12 @@ Route::post('/creator/pendidikan/create', [PendidikanController::class, 'store']
 Route::get('/creator/pendidikan/{id}', [PendidikanController::class, 'edit'])->name('pendidikan.edit');
 Route::put('/creator/pendidikan/update/{id}', [PendidikanController::class, 'update'])->name('pendidikan.update');
 Route::get('/creator/pendidikan/delete/{id}', [PendidikanController::class, 'destroy'])->name('pendidikan.destroy');
+
+Route::get('/creator/category', [CategoryController::class, 'index'])->name('kategori');
+Route::post('/creator/category/create', [CategoryController::class, 'store'])->name('kategori.store');
+Route::get('/creator/category/{id}', [CategoryController::class, 'edit'])->name('kategori.edit');
+Route::put('/creator/category/update/{id}', [CategoryController::class, 'update'])->name('kategori.update');
+Route::get('/creator/category/delete/{id}', [CategoryController::class, 'destroy'])->name('kategori.destroy');
 
 
 require __DIR__ . '/auth.php';

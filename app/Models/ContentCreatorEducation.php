@@ -18,12 +18,14 @@ class ContentCreatorEducation extends Model
 
     public function creator(): BelongsTo
     {
+
         return $this->belongsTo(ContentCreator::class, 'creator_id');
     }
 
-    public static function getAllEducation()
+    public static function getCreatorEducation()
     {
-        return ContentCreatorEducation::all();
+        $creatorId = User::getCreatorId(Auth::user()->id);
+        return ContentCreatorEducation::where('creator_id', $creatorId->id)->get();
     }
 
     public static function newEducation($data)

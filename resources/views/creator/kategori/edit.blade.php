@@ -8,15 +8,23 @@
         <div class="m-5">
             <h1 class="text-center font-bold">Formulir</h1>
         </div>
-        <form action="{{ route('pendidikan.update', $pendidikan->id) }}" method="POST">
+        <form action="{{ route('kategori.update', $kategori->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-control w-full max-w-xs m-auto">
                 <label class="label">
-                    <span class="label-text">Pendidikan</span>
+                    <span class="label-text">Kategori</span>
+                    <p>{{ $kategori->category->name }}</p>
                 </label>
-                <input type="text" value="{{ $pendidikan->name }}" class="input input-bordered w-full max-w-xs"
-                    name='name' />
+                <select id="kategori" class="select select-bordered w-full max-w-xs" name="category_id"
+                    :value="old('kategori')" required>
+                    <option disabled selected>Pilih Kategori</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <div class="my-3"></div>
             <button type="submit" class="btn btn-primary btn-sm m-auto flex">Perbarui</button>
