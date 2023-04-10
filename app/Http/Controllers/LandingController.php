@@ -9,18 +9,26 @@ use Illuminate\Http\Request;
 class LandingController extends Controller
 {
     //
-    public function home() {
+    public function home()
+    {
         return view('landing-page');
     }
 
-    public function video() {
+    public function video()
+    {
         $videos = Video::getFreeVideos();
 
         return view('video', compact('videos'));
     }
 
-    public function creator() {
+    public function creator()
+    {
         $creators = ContentCreator::all();
         return view('creator', compact('creators'));
+    }
+
+    public function edukasi()
+    {
+        return view('edukasi');
     }
 }
