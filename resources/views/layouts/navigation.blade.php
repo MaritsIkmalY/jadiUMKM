@@ -17,34 +17,18 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('edukasi.index')" :active="request()->routeIs('edukasi.index')">
-                        {{ __('Edukasi') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('skill.index')" :active="request()->routeIs('skill.index')">
-                        {{ __('Keahlian') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('pendidikan')" :active="request()->routeIs('pendidikan')">
-                        {{ __('Pendidikan') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('kategori')" :active="request()->routeIs('kategori')">
-                        {{ __('Kategori') }}
-                    </x-nav-link>
-                </div>
+                @if (Auth::user()->role_id == 3)
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('edukasi.index')" :active="request()->routeIs('edukasi.index')">
+                            {{ __('Edukasi') }}
+                        </x-nav-link>
+                    </div>
+                @endif
 
                 @if (Auth::user()->role_id == 2)
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('portofolio.index')" :active="request()->routeIs('portofolio.index')">
-                            {{ __('Portofolio') }}
+                        <x-nav-link :href="route('creator.dashboard')" :active="request()->routeIs('creator.dashboard')">
+                            {{ __('Content Creator') }}
                         </x-nav-link>
                     </div>
                 @endif
@@ -112,11 +96,22 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('edukasi')" :active="request()->routeIs('edukasi')">
-                {{ __('Edukasi') }}
-            </x-responsive-nav-link>
-        </div>
+
+        @if (Auth::user()->role_id == 3)
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('edukasi.index')" :active="request()->routeIs('edukasi.index')">
+                    {{ __('Edukasi') }}
+                </x-responsive-nav-link>
+            </div>
+        @endif
+
+        @if (Auth::user()->role_id == 2)
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('creator.dashboard')" :active="request()->routeIs('creator.dashboard')">
+                    {{ __('Content Creator') }}
+                </x-responsive-nav-link>
+            </div>
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

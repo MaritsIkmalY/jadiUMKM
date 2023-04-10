@@ -48,6 +48,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('creator')->group(function () {
+    Route::get('/creator/home', function () {
+        return view('creator.index');
+    })->name('creator.dashboard');
     Route::resource('/creator/portofolio', PortofolioController::class);
     Route::resource('/creator/skill', SkillController::class);
 
@@ -78,11 +81,6 @@ Route::middleware('admin')->group(function () {
     Route::put('/admin/edukasi/webinar/update/{id}', [WebinarController::class, 'update'])->name('webinar.update');
     Route::get('/admin/edukasi/webinar/delete/{id}', [WebinarController::class, 'destroy'])->name('webinar.destroy');
 });
-
-
-
-
-
 
 
 require __DIR__ . '/auth.php';
