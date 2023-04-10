@@ -32,4 +32,9 @@ class ContentCreator extends Model
     {
         return $this->hasMany(ContentCreatorPortofolio::class, 'creator_id');
     }
+
+    public function skill(): HasMany
+    {
+        return $this->hasMany(ContentCreatorSkill::class, 'creator_id');
+    }
 }

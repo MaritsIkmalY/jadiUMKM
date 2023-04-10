@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Creator;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PortoRequest;
 use App\Models\ContentCreator;
 use App\Models\ContentCreatorPortofolio;
@@ -36,12 +37,12 @@ class PortofolioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PortoRequest $portoRequest)
+    public function store(PortoRequest $request)
     {
-        $validatedData = $portoRequest->validated();
-        if ($portoRequest->file('photo')) {
-            $filename = $portoRequest->file('photo')->getClientOriginalName() . Auth::user()->email . '.' . $portoRequest->file('photo')->getClientOriginalExtension();
-            $path = $portoRequest->file('photo')->storeAs('/assets/images', $filename, 'public');
+        $validatedData = $request->validated();
+        if ($request->file('photo')) {
+            $filename = basename($request->file('photo')->getClientOriginalName(), '.' . $request->file('photo')->getClientOriginalExtension());
+            $path = $request->file('photo')->storeAs('/assets/images', $filename . "-" . Auth::user()->email . "." . $request->file('photo')->getClientOriginalExtension(), 'public');
 
             $validatedData['photo'] = $path;
         }
@@ -79,8 +80,8 @@ class PortofolioController extends Controller
     {
         $validatedData = $request->validated();
         if ($request->file('photo')) {
-            $filename = $request->file('photo')->getClientOriginalName() . Auth::user()->email . '.' . $request->file('photo')->getClientOriginalExtension();
-            $path = $request->file('photo')->storeAs('/assets/images', $filename, 'public');
+            $filename = basename($request->file('photo')->getClientOriginalName(), '.' . $request->file('photo')->getClientOriginalExtension());
+            $path = $request->file('photo')->storeAs('/assets/images', $filename . "-" . Auth::user()->email . "." . $request->file('photo')->getClientOriginalExtension(), 'public');
             if (!is_null($request->user()->photo)) {
                 Storage::disk('public')->delete($request->user()->photo);
             }
