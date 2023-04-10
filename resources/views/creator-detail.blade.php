@@ -161,6 +161,12 @@
                         <div class="badge badge-primary">{{ $skill->name }}</div>
                     @endforeach
                 </div>
+                <div class="flex flex-wrap gap-4 items-center">
+                    @foreach ($creator->education as $education)
+                        <div class="badge badge-primary">{{ $education->name }}</div>
+                    @endforeach
+                </div>
+
                 <a target="_blank" href="https://wa.me/{{ $creator->user->phone }}" class="btn btn-primary">Chat dan
                     Negosiasi</a>
             </div>
