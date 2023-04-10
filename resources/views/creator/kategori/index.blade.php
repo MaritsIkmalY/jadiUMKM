@@ -6,28 +6,27 @@
     @endif
     <div class="container py-5 max-w-2xl px-6 m-auto bg-white min-h-screen">
         <div class="m-5 flex justify-between">
-            <h1 class="text-start font-bold">Pendidikan</h1>
-            <label for="addPendidikan" class="btn btn-primary btn-xs">Tambahkan Pendidikan</label>
+            <h1 class="text-start font-bold">Kategori</h1>
+            <label for="addKategori" class="btn btn-primary btn-xs">Tambahkan Kategori</label>
         </div>
         <div class="divider"></div>
-        @if (count($pendidikan) == 0)
-            Pendidikan Masih Kosong
+        @if (count($kategori) == 0)
+            Kategori Masih Kosong
         @else
             <div class="overflow-x-auto">
                 <table class="table-auto m-auto">
-                    @foreach ($pendidikan as $item)
+                    @foreach ($kategori as $item)
                         <tbody>
                             <tr class="hover:bg-gray-50">
                                 <td class="border-b-2 px-5">
-                                    <h2>{{ $item->name }}</h2>
+                                    <h2>{{ $item->category->name }}</h2>
                                 </td>
-
                                 <td class="border-b-2">
-                                    <a href="{{ route('pendidikan.edit', $item->id) }}"
+                                    <a href="{{ route('kategori.edit', $item->id) }}"
                                         class="btn btn-primary btn-xs">Edit</a>
                                 </td>
                                 <td class="border-b-2">
-                                    <a href="{{ route('pendidikan.destroy', $item->id) }}"
+                                    <a href="{{ route('kategori.destroy', $item->id) }}"
                                         class="btn btn-primary btn-xs">Hapus</a>
                                 </td>
 
@@ -40,18 +39,20 @@
     @endif
 
     <!-- Put this part before </body> tag -->
-    <input type="checkbox" id="addPendidikan" class="modal-toggle" />
-    <label for="addPendidikan" class="modal cursor-pointer">
+    <input type="checkbox" id="addKategori" class="modal-toggle" />
+    <label for="addKategori" class="modal cursor-pointer">
         <label class="modal-box relative" for="">
-            <h1>Pendidikan</h1>
-            <form action="{{ route('pendidikan.store') }}" method="POST">
+            <h1>Kategori</h1>
+            <form action="{{ route('kategori.store') }}" method="POST">
                 @csrf
-                <div class="form-control w-full max-w-xs m-auto">
-                    <label class="label">
-                        <span class="label-text">Pendidikan</span>
-                    </label>
-                    <input type="text" placeholder="Pendidikan" class="input input-bordered w-full max-w-xs"
-                        name='name' />
+                <div class="mt-4">
+                    <select id="kategori" class="select select-bordered w-full max-w-xs" name="category_id"
+                        :value="old('kategori')" required>
+                        <option disabled selected>Pilih Kategori</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="my-3"></div>
                 <div class="flex justify-end">

@@ -11,8 +11,8 @@
 
     <div class="lg:grid grid-cols-3 gap-4 justify-center items-center">
         @foreach ($webinar as $item)
-            <div class="card card-compact bg-base-100 shadow-xl lg:h-96">
-                <figure><img src="/storage/{{ $item->photo }}" alt="{{ $item->title }}" /></figure>
+            <div class="card card-compact bg-base-100 shadow-xl  sm:my-5 md:my-2">
+                <figure class="h-96"><img src="/storage/{{ $item->photo }}" alt="{{ $item->title }}" /></figure>
                 <div class="card-body gap-4">
                     <h2 class="card-title">{{ $item->title }}</h2>
                     <div class="flex justify-between">

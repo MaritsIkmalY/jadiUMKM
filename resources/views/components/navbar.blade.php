@@ -1,3 +1,4 @@
+
 <!-- component -->
 <body class="bg-blue-500">
 	<nav class="relative px-4 py-4 flex justify-between items-center bg-white">
@@ -75,6 +76,7 @@
 		</nav>
 	</div>
 </body>
+
 
 <script>
 // Burger menus
