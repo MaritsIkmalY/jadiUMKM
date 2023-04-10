@@ -30,8 +30,8 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link>
-                        {{ __('Edukasi') }}
+                    <x-nav-link :href="route('pendidikan')" :active="request()->routeIs('pendidikan')">
+                        {{ __('Pendidikan') }}
                     </x-nav-link>
                 </div>
 

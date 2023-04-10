@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Edukasi\Video\VideoController;
 use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Edukasi\Webinar\WebinarController;
+use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
 use App\Http\Controllers\PortofolioController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,14 @@ Route::middleware('admin')->group(function () {
 Route::get('/edukasi', [EdukasiController::class, 'index'])->name('edukasi');
 Route::get('/edukasi/videos', [VideoController::class, 'index'])->name('videos.index');
 Route::get('/edukasi/webinar', [WebinarController::class, 'index'])->name('webinar.index');
+
+
+Route::get('/creator/pendidikan', [PendidikanController::class, 'index'])->name('pendidikan');
+Route::get('/creator/pendidikan/create', [PendidikanController::class, 'create'])->name('pendidikan.create');
+Route::post('/creator/pendidikan/create', [PendidikanController::class, 'store'])->name('pendidikan.store');
+Route::get('/creator/pendidikan/{id}', [PendidikanController::class, 'edit'])->name('pendidikan.edit');
+Route::put('/creator/pendidikan/update/{id}', [PendidikanController::class, 'update'])->name('pendidikan.update');
+Route::get('/creator/pendidikan/delete/{id}', [PendidikanController::class, 'destroy'])->name('pendidikan.destroy');
 
 
 require __DIR__ . '/auth.php';
