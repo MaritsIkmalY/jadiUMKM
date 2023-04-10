@@ -5,7 +5,7 @@
         </div>
         <div class="flex gap-16">
             <ul class="menu menu-horizontal px-1">
-                <li><a>Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li tabindex="0">
                     <a>
                         Edukasi
@@ -15,8 +15,9 @@
                         </svg>
                     </a>
                     <ul class="p-2 bg-base-100">
-                        <li><a>Video</a></li>
-                        <li><a>Pembelajaran</a></li>
+                        <li><a href="{{ route('video') }}">Video Gratis</a></li>
+                        <li><a href="https://t.me/+BielMi-IEV5mOGQ1">Video Berbayar</a></li>
+                        <li><a >Pembelajaran</a></li>
                     </ul>
                 </li>
                 <li><a>Content Creator</a></li>
