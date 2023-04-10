@@ -25,11 +25,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'home'])->name('home');
 Route::get('/landing/edukasi/video', [LandingController::class, 'video'])->name('video');
+
 Route::get('/landing/creator', [LandingController::class, 'creator'])->name('creator');
 Route::get('/landing/edukasi', [LandingController::class, 'edukasi'])->name('edukasi');
 Route::get('/landing/edukasi/webinar', [LandingController::class, 'webinar'])->name('webinar');
 Route::get('/landing/creator/detail/{id}', [LandingController::class, 'creatorDetail'])->name('creator.detail');
 Route::get('/landing/creator/filter', [FilterController::class, 'getCreatorByFilter'])->name('filter');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -46,6 +48,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('creator')->group(function () {
+    Route::get('/creator/home', function () {
+        return view('creator.index');
+    })->name('creator.dashboard');
     Route::resource('/creator/portofolio', PortofolioController::class);
     Route::resource('/creator/skill', SkillController::class);
 
@@ -76,11 +81,6 @@ Route::middleware('admin')->group(function () {
     Route::put('/admin/edukasi/webinar/update/{id}', [WebinarController::class, 'update'])->name('webinar.update');
     Route::get('/admin/edukasi/webinar/delete/{id}', [WebinarController::class, 'destroy'])->name('webinar.destroy');
 });
-
-
-
-
-
 
 
 require __DIR__ . '/auth.php';
