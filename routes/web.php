@@ -4,8 +4,9 @@ use App\Http\Controllers\Admin\Edukasi\Video\VideoController;
 use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Edukasi\Webinar\WebinarController;
+use App\Http\Controllers\Creator\PortofolioController;
+use App\Http\Controllers\Creator\SkillController
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
-use App\Http\Controllers\PortofolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +35,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('creator')->group(function () {
-    Route::resource('/edukasi/portofolio', PortofolioController::class);
+    Route::resource('/creator/portofolio', PortofolioController::class);
+    Route::resource('/creator/skill', SkillController::class);
 });
 
 Route::middleware('admin')->group(function () {
