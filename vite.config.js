@@ -7,7 +7,6 @@ export default defineConfig({
             input: [
                 "resources/css/app.css",
                 "resources/js/app.js",
-                "resources/js/function.js",
                 "resources/css/style.css",
                 "resources/css/plugins/pe-icon-7-stroke.css",
                 "resources/css/plugins/font-awesome.min.css",

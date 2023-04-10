@@ -1,5 +1,12 @@
 <x-app-layout>
+
     <h1>Portofolio</h1>
+
+    @if (session()->has('success'))
+        <div class="alert alert-success my-4">
+            {{ session()->get('success') }}
+        </div>
+    @endif
 
     <a href="{{ route('portofolio.create') }}" class="btn btn-primary">Upload Portofolio</a>
 

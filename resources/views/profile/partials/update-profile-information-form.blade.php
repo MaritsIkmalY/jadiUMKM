@@ -14,7 +14,6 @@
     </form>
 
 
-
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
@@ -22,10 +21,7 @@
             <label class="label">
                 <input type="file" accept='image/*' onchange='openFile(event)' name="photo" />
                 <figure class="personal-figure">
-                    <img id="output" class="personal-avatar"
-                        src=@if (Auth::user()->photo) /storage/{{ Auth::user()->photo }}
-                @else
-                    https://api.multiavatar.com/Starcrasher.png @endif>
+                    <img id="output" class="personal-avatar" src="/storage/{{ Auth::user()->photo }}" />
                     <figcaption class="personal-figcaption">
                         <img
                             src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
@@ -90,5 +86,3 @@
         </div>
     </form>
 </section>
-
-

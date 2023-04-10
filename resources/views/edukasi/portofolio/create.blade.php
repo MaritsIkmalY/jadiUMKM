@@ -2,29 +2,26 @@
 
     <form action="{{ route('portofolio.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="py-4">Portofolio</div>
+        <div class="py-4 font-bold text-xl">Formulir Tambah Portofolio</div>
 
         <div class="form-control">
-            <label class="input-group">
-                <span>Judul</span>
-                <input type="text" name="title" class="input input-bordered" />
-            </label>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="input input-bordered w-full" />
         </div>
 
-        <div class="form-control mt-4 w-full">
-            <textarea id="myeditorinstance" name="description">Description</textarea>
+        <div class="form-control w-full my-4">
+            <label for="description">Deskripsi</label>
+            <textarea name="description" class="textarea textarea-bordered" placeholder="Deskripsi" id="description"></textarea>
         </div>
 
         <div class="py-4">Gambar Portofolio</div>
 
-        <img src="" id="output">
+        <img class="w-96 h-96" id="output">
 
         <div class="my-4">
             <input type="file" name="photo" accept='image/*' onchange='openFile(event)'
                 class="file-input file-input-bordered  w-full max-w-xs" />
         </div>
-
-
 
         <input type="submit" value="Upload" class="btn btn-primary">
 
