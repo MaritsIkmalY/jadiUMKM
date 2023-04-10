@@ -8,6 +8,7 @@ use App\Http\Controllers\Creator\Kategori\CategoryController;
 use App\Http\Controllers\Creator\PortofolioController;
 use App\Http\Controllers\Creator\SkillController;
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,8 @@ Route::get('/landing/edukasi/video', [LandingController::class, 'video'])->name(
 Route::get('/landing/creator', [LandingController::class, 'creator'])->name('creator');
 Route::get('/landing/edukasi', [LandingController::class, 'edukasi'])->name('edukasi');
 Route::get('/landing/edukasi/webinar', [LandingController::class, 'webinar'])->name('webinar');
+Route::get('/landing/creator/detail/{id}', [LandingController::class, 'creatorDetail'])->name('creator.detail');
+Route::get('/landing/creator/filter', [FilterController::class, 'getCreatorByFilter'])->name('filter');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

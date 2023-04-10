@@ -1,10 +1,11 @@
 <div class="navbar bg-base-100 drop-shadow-sm p-4">
     <div class="max-w-7xl w-full m-auto">
         <div class="flex-1">
-            <a class="btn btn-ghost normal-case text-xl">JadiUMKM</a>
+            <a class="btn btn-ghost normal-case text-xl"><img src="/assets/images/logo.png" alt="jadiUMKM"
+                    class="w-32"></a>
         </div>
         <div class="flex gap-16">
-            <ul class="menu menu-horizontal px-1">
+            <ul class="menu menu-horizontal px-1 z-99">
                 <li><a href="{{ route('home') }}">Home</a></li>
                 <li tabindex="0">
                     <a>
@@ -23,7 +24,7 @@
                 <li><a href="{{ route('creator') }}">Content Creator</a></li>
             </ul>
             @if (Auth::user())
-                <div class="dropdown dropdown-hover dropdown-end">
+                <div class="dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost text-primary m-1">{{ Auth::user()->name }}</label>
                     <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li> <a href="{{ route('dashboard') }}">Dashboard</a></li>
