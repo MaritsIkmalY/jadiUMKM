@@ -17,7 +17,7 @@
                     <ul class="p-2 bg-base-100">
                         <li><a href="{{ route('video') }}">Video Gratis</a></li>
                         <li><a href="https://t.me/+BielMi-IEV5mOGQ1">Video Berbayar</a></li>
-                        <li><a>Pembelajaran</a></li>
+                        <li><a href="{{ route('webinar') }}">Webinar</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ route('creator') }}">Content Creator</a></li>
