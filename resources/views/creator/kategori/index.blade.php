@@ -11,7 +11,7 @@
         </div>
         <div class="divider"></div>
         @if (count($kategori) == 0)
-            Halo
+            Kategori Masih Kosong
         @else
             <div class="overflow-x-auto">
                 <table class="table-auto m-auto">
