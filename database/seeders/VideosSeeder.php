@@ -15,15 +15,21 @@ class VideosSeeder extends Seeder
     {
         DB::table('videos')->insert([
             [
-                'link' => 'https://www.youtube.com/embed/SoCuPpCFj7Y',
-                'title' => 'Laravel Controller dengan cara memburu babi hutan',
-                'subtitle' => 'Bermain',
+                'link' => 'https://www.youtube.com/embed/8g1H3ipDNOs',
+                'title' => 'Bangun Bisnis dari 0',
+                'subtitle' => 'admin',
                 'is_subscribe' => false,
             ],
             [
-                'link' => 'https://www.youtube.com/embed/SoCuPpCFj7Y',
-                'title' => 'Laravel Controller',
-                'subtitle' => 'Bermain',
+                'link' => 'https://www.youtube.com/embed/kctqBGJE2_s',
+                'title' => '10 Cara Bisnis Kecil Jadi Besar',
+                'subtitle' => 'admin',
+                'is_subscribe' => false,
+            ],
+            [
+                'link' => 'https://www.youtube.com/embed/jC6undwFl-c',
+                'title' => 'Tips Marketing Bisnis',
+                'subtitle' => 'admin',
                 'is_subscribe' => false,
             ],
         ]);

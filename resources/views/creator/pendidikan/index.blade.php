@@ -11,7 +11,7 @@
         </div>
         <div class="divider"></div>
         @if (count($pendidikan) == 0)
-            Halo
+            Pendidikan Masih Kosong
         @else
             <div class="overflow-x-auto">
                 <table class="table-auto m-auto">
