@@ -51,5 +51,9 @@ class User extends Authenticatable
         return ContentCreator::where('user_id', $id)->first('id');
     }
 
+    public static function getMarketplaceId(int $id) {
+        return MarketPlace::where('user_id', $id)->first('id');
+    }
+
 
 }
