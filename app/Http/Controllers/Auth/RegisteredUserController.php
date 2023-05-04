@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContentCreator;
+use App\Models\MarketPlace;
 use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -50,6 +51,12 @@ class RegisteredUserController extends Controller
 
         if ($user->role_id == 2) {
             ContentCreator::create([
+                'user_id' => $user->id,
+            ]);
+        };
+
+        if ($user->role_id == 4) {
+            MarketPlace::create([
                 'user_id' => $user->id,
             ]);
         };

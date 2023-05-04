@@ -10,6 +10,7 @@ use App\Http\Controllers\Creator\SkillController;
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\Marketplace\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,5 +83,11 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/edukasi/webinar/delete/{id}', [WebinarController::class, 'destroy'])->name('webinar.destroy');
 });
 
+Route::middleware('marketplace')->group(function () {
+    Route::get('/marketplace/home', function () {
+        return view('marketplace.index');
+    })->name('marketplace.dashboard');
+    Route::resource('/marketplace/produk', ProductController::class);
+});
 
 require __DIR__ . '/auth.php';
