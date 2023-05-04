@@ -32,6 +32,8 @@ Route::get('/landing/edukasi', [LandingController::class, 'edukasi'])->name('edu
 Route::get('/landing/edukasi/webinar', [LandingController::class, 'webinar'])->name('webinar');
 Route::get('/landing/creator/detail/{id}', [LandingController::class, 'creatorDetail'])->name('creator.detail');
 Route::get('/landing/creator/filter', [FilterController::class, 'getCreatorByFilter'])->name('filter');
+Route::get('/landing/katalog', [LandingController::class, 'katalog'])->name('katalog');
+Route::get('/landing/katalog/{id}', [LandingController::class, 'katalogDetail'])->name('katalog-detail');
 
 
 Route::get('/dashboard', function () {

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('marketplace_id');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('photo')->default('/assets/images/default-product.png');
             $table->string('price');
             $table->timestamps();
 

@@ -18,7 +18,7 @@
 
         <div class="form-control">
             <label for="price">Harga Produk</label>
-            <input type="text" id="price" name="price" class="input input-bordered w-full" value={{$produk->price}}/>
+            <input type="text" id="price" name="price" class="input input-bordered w-full" value={{$produk->price}} />
         </div>
 
         <div class="py-4">Gambar Produk</div>
