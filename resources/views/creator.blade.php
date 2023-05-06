@@ -1,5 +1,8 @@
 <x-main-layout>
-    <h1>Content Creator</h1>
+    @php
+        error_reporting(0);
+    @endphp
+    <h1 class="my-2 font-bold text-4xl">Content Creator</h1>
     <div>
         <form action="{{ route('filter') }}" method="get">
             @csrf
@@ -10,8 +13,8 @@
         </form>
     </div>
     <div class="grid grid-cols-3 justify-center gap-4 mt-24">
-  
-        @if (is_array($creators[0]))
+
+        @if (is_array($creators[0]) || count($creators) == 0)
             <div>
                 Tidak ada content creator
             </div>
@@ -29,7 +32,6 @@
                     <div class="card-body">
                         <h2 class="card-title">
                             {{ $creator->user->name }}
-
                         </h2>
                         <p>{{ $creator->description }}</p>
                         <div class="card-actions justify-end">

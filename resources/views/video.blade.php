@@ -1,5 +1,4 @@
 <x-main-layout>
-
     <div class="flex flex-col gap-4 justify-center items-center">
         <h1>Video Gratis</h1>
         <div class="overflow-x-auto">
