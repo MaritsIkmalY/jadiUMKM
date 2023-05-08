@@ -12,7 +12,7 @@
             @endforeach
         </form>
     </div>
-    <div class="grid grid-cols-3 justify-center gap-4 mt-24">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">
 
         @if (is_array($creators[0]) || count($creators) == 0)
             <div>
@@ -20,6 +20,9 @@
             </div>
         @else
             @foreach ($creators as $creator)
+            <div>
+
+            </div>
                 <a href="{{ route('creator.detail', $creator->id) }}" class="card bg-base-100 shadow-xl">
                     <figure>
                         @if (!is_null($creator->user->photo))
