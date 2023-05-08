@@ -47,14 +47,15 @@ class ContentCreator extends Model
 
     public static function getContentCreatorByCategory($id)
     {
-        $data = [];
+        $datas = [];
         $categoryId = HasCategory::where('category_id', $id)->get();
 
-        foreach ($categoryId as $category) {
 
+        foreach ($categoryId as $category) {
             $data = ContentCreator::where('id', $category->creator_id)->first();
+            $datas[] = $data;
         }
-        $datas[] = $data;
+
         return $datas;
     }
 }

@@ -1,7 +1,7 @@
 <x-main-layout>
     <div class="hero">
         <div class="hero-content flex-col lg:flex-row">
-            <img src="assets/images/slider/slider1.png" class=" rounded-lg shadow-sm sm:max-w-sm lg:max-w-lg" />
+            <img src="assets/images/slider/slider1.png" class="rounded-lg shadow-sm sm:max-w-sm lg:max-w-lg" alt="slider"/>
             <div class="flex flex-col justify-center items-center">
                 <h1 class="text-5xl font-bold text-center sm:text-7xl sm:text-left">jadiUMKM</h1>
                 <p class="py-6 font-bold text-2xl">Learn. Grow. Thrive.
@@ -22,10 +22,10 @@
                 <p>
                     Digitalisasi UMKM memungkinkan pelaku usaha memiliki jangkauan pemasaran yang lebih luas bahkan bisa
                     sampai ke pelosok negeri.</p>
-                <p class="pt-3 font-bold">Memperluas jangkauan</p>
+                <p class="pt-3 font-bold">Meningkatkan Pendapatan</p>
                 <p>Meningkatkan pendapatan
                     Pastinya, semakin luas jangkauan pemasaran suatu bisnis maka penghasilan pun akan meningkat.</p>
-                <p class="pt-3 font-bold">Memperluas jangkauan</p>
+                <p class="pt-3 font-bold">Mempermudah Transaksi</p>
                 <p>
                     Mempermudah transaksi
                     Pembayaran digital akan memudahkan UMKM dan konsumen. Goodbye kembalian!</p>
@@ -87,14 +87,13 @@
             <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
                 <div
                     class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-black sm:grid-cols-2 md:flex lg:gap-x-10">
-                    <a href="{{ route('video') }}">Pembelajaran <span aria-hidden="true">&rarr;</span></a>
+                    <a href="{{ route('video') }}"> <button class="bg-primary rounded-lg p-1 text-white">Pembelajaran<span aria-hidden="true">&rarr;</span></button></a>
 
-                    <a href="https://t.me/+BielMi-IEV5mOGQ1" target="_blank">Pembelajaran Premium<span
-                            aria-hidden="true">&rarr;</span></a>
+                    <a href="https://t.me/+BielMi-IEV5mOGQ1" target="_blank"><button class="bg-primary rounded-lg p-1 text-white">Sharing UMKM<span aria-hidden="true">&rarr;</span></button></a>
 
-                    <a href="{{ route('webinar') }}">Webinar <span aria-hidden="true">&rarr;</span></a>
+                    <a href="{{ route('webinar') }}"><button class="bg-primary rounded-lg p-1 text-white">Webinar<span aria-hidden="true">&rarr;</span></button></a>
 
-                    <a href="{{ route('creator') }}">Content Creator <span aria-hidden="true">&rarr;</span></a>
+                    <a href="{{ route('creator') }}"><button class="bg-primary rounded-lg p-1 text-white">Content Creator<span aria-hidden="true">&rarr;</span></button></a>
 
                 </div>
             </div>
