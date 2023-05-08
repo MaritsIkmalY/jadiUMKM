@@ -1,6 +1,6 @@
 <x-main-layout>
     <div class="flex flex-col gap-4 items-start">
-        <div class="mx-auto"> 
+        <div class="mx-auto">
             <figure class="rounded-md border">
                 <img class="rounded-md w-96" src="/storage/{{ $product->photo }}" alt="product">
             </figure>
@@ -19,10 +19,12 @@
                 {{ $product->creator->user->name }}
             </div>
             <div class="text-success bg">
-                WhatsApp
-                <div class="font-bold">
-                    {{ $product->creator->user->phone }}
-                </div>
+                @if(is_null($product->creator->user->phone))
+                    <div class="text-bold">Nomor Belum Tersedia</div>
+                @else
+                <a href="https://wa.me/{{$product->creator->user->phone}}"
+                    class="btn btn-success" target="_blank">WhatsApp</a>
+                @endif
             </div>
         </div>
     </div>

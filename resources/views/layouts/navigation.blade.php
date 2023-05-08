@@ -36,7 +36,7 @@
                 @if (Auth::user()->role_id == 4)
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('marketplace.dashboard')" :active="request()->routeIs('marketplace.dashboard')">
-                            {{ __('Marketplace') }}
+                            {{ __('Katalog') }}
                         </x-nav-link>
                     </div>
                 @endif
@@ -124,7 +124,7 @@
         @if (Auth::user()->role_id == 4)
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('marketplace.dashboard')" :active="request()->routeIs('marketplace.dashboard')">
-                    {{ __('Marketplace') }}
+                    {{ __('Katalog') }}
                 </x-responsive-nav-link>
             </div>
         @endif
