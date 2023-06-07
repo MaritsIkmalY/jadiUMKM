@@ -72,17 +72,8 @@ Route::middleware('creator')->group(function () {
 });
 
 Route::middleware('admin')->group(function () {
-    Route::get('/admin/edukasi/videos', [VideoController::class, 'create'])->name('videos.create');
-    Route::post('/admin/edukasi/videos', [VideoController::class, 'store'])->name('videos.store');
-    Route::get('/admin/edukasi/videos/{id}', [VideoController::class, 'edit'])->name('videos.edit');
-    Route::put('/admin/edukasi/videos/update/{id}', [VideoController::class, 'update'])->name('videos.update');
-    Route::get('/admin/edukasi/videos/delete/{id}', [VideoController::class, 'destroy'])->name('videos.destroy');
-
-    Route::get('/admin/edukasi/webinar', [WebinarController::class, 'create'])->name('webinar.create');
-    Route::post('/admin/edukasi/webinar', [WebinarController::class, 'store'])->name('webinar.store');
-    Route::get('/admin/edukasi/webinar/{id}', [WebinarController::class, 'edit'])->name('webinar.edit');
-    Route::put('/admin/edukasi/webinar/update/{id}', [WebinarController::class, 'update'])->name('webinar.update');
-    Route::get('/admin/edukasi/webinar/delete/{id}', [WebinarController::class, 'destroy'])->name('webinar.destroy');
+    Route::resource('/admin/videos', VideoController::class);
+    Route::resource('/admin/webinar', WebinarController::class);
 });
 
 Route::middleware('marketplace')->group(function () {
