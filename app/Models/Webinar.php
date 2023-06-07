@@ -29,8 +29,4 @@ class Webinar extends Model
         return Webinar::create($data);
     }
 
-    public static function getWebinarById($id)
-    {
-        return Webinar::find($id);
-    }
 }

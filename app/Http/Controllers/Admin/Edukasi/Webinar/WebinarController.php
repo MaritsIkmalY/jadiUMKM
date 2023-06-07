@@ -32,20 +32,18 @@ class WebinarController extends Controller
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil ditambahkan');
     }
 
-    public function show(string $id)
+    public function show(Webinar $webinar)
     {
         //
     }
 
-    public function edit(string $id)
+    public function edit(Webinar $webinar)
     {
-        $webinar = Webinar::getWebinarById($id);
         return view('admin.webinar.edit', compact('webinar'));
     }
 
-    public function update(WebinarRequest $request, string $id)
+    public function update(WebinarRequest $request, Webinar $webinar)
     {
-        $webinar = Webinar::getWebinarById($id);
         $data = $request->validated();
         if (!is_null($request->file('photo'))) {
             $filename = $request->file('photo')->getClientOriginalName();
@@ -58,9 +56,8 @@ class WebinarController extends Controller
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil diperbarui');
     }
 
-    public function destroy(string $id)
+    public function destroy(Webinar $webinar)
     {
-        $webinar = Webinar::getWebinarById($id);
         Storage::disk('public')->delete($webinar->photo);
         $webinar->delete();
 

@@ -22,8 +22,7 @@ class VideoController extends Controller
     {
         return view('admin.videos.create');
     }
-
-
+  
     public function store(VideoRequest $request)
     {
         $data = $request->validated();
@@ -32,31 +31,28 @@ class VideoController extends Controller
         return redirect()->route('videos.index')->with('success', 'Video berhasil ditambahkan');
     }
 
-    public function show(string $id)
+    public function show(Video $video)
     {
         //
     }
 
-    public function edit(string $id)
+    public function edit(Video $video)
     {
-        $video = Video::getVideoById($id);
         return view('admin.videos.edit', compact('video'));
     }
 
-    public function update(VideoRequest $request, string $id)
+    public function update(VideoRequest $request, Video $video)
     {
         $data = $request->validated();
-        $video = Video::getVideoById($id);
-        if ($video) {
-            $video->update($data);
-        }
+        $video->update($data);
+
         return redirect()->route('videos.index')->with('success', 'Video berhasil diperbarui');
     }
 
-    public function destroy(string $id)
+    public function destroy(Video $video)
     {
-        $video = Video::getVideoById($id);
         $video->delete();
+
         return redirect()->route('videos.index')->with('success', 'Video berhasil dihapus');
     }
 }
