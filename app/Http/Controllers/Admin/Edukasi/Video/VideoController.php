@@ -22,8 +22,7 @@ class VideoController extends Controller
     {
         return view('admin.videos.create');
     }
-
-
+  
     public function store(VideoRequest $request)
     {
         $data = $request->validated();
