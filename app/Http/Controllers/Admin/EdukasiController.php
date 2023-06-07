@@ -9,6 +9,6 @@ class EdukasiController extends Controller
 {
     public function index()
     {
-        return view('edukasi.index');
+        return view('admin.index');
     }
 }

@@ -20,10 +20,12 @@
                         <div class="badge badge-secondary">Gratis</div>
                     </div>
                     <a class="btn btn-primary w-full" href="{{ $item->link }}" target="_blank">Ikut Webinar</a>
-                    @if (Auth::user()->role_id == 3)
-                        <a class="btn btn-secondary w-full" href="{{ route('webinar.edit', $item->id) }}">Edit</a>
-                        <a class="btn btn-danger w-full" href="{{ route('webinar.destroy', $item->id) }}">Hapus</a>
-                    @endif
+                    <a class="btn btn-secondary w-full" href="{{ route('webinar.edit', $item->id) }}">Edit</a>
+                    <form action="{{route('webinar.destroy', $item->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger w-full" value="Hapus">
+                    </form>
                 </div>
             </div>
         @endforeach

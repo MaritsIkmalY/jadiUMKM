@@ -10,26 +10,18 @@ use Illuminate\Support\Facades\Storage;
 
 class WebinarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $webinar = Webinar::getWebinar();
-        return view('edukasi.webinar.index', compact('webinar'));
+        return view('admin.webinar.index', compact('webinar'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('edukasi.webinar.create');
+        return view('admin.webinar.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(WebinarRequest $request)
     {
         $filename = $request->file('photo')->getClientOriginalName();
@@ -40,26 +32,17 @@ class WebinarController extends Controller
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $webinar = Webinar::getWebinarById($id);
-        return view('edukasi.webinar.edit', compact('webinar'));
+        return view('admin.webinar.edit', compact('webinar'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(WebinarRequest $request, string $id)
     {
         $webinar = Webinar::getWebinarById($id);
@@ -70,15 +53,11 @@ class WebinarController extends Controller
             Storage::disk('public')->delete($webinar->photo);
             $data['photo'] = $path;
         }
-        if ($webinar) {
-            $webinar->update($data);
-        }
+        $webinar->update($data);
+
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $webinar = Webinar::getWebinarById($id);
