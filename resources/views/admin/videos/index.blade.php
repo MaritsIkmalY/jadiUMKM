@@ -30,8 +30,11 @@
                                         class="btn btn-primary btn-xs">Edit</a>
                                 </td>
                                 <td class="border-b-2">
-                                    <a href="{{ route('videos.destroy', $video->id) }}"
-                                        class="btn btn-primary btn-xs">Hapus</a>
+                                    <form action="{{route('videos.destroy', $video->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Hapus">
+                                    </form>
                                 </td>
                             @endif
 

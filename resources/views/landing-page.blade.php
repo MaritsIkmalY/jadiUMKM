@@ -29,7 +29,7 @@
                 <p>
                     Mempermudah transaksi
                     Pembayaran digital akan memudahkan UMKM dan konsumen. Goodbye kembalian!</p>
-                <p class="pt-3 font-bold">Memperluas jangkauan</p>
+                <p class="pt-3 font-bold">Mengikuti Trend</p>
                 <p>Mengikuti trend
                     Digitalisasi membuat UMKM beradaptasi dengan kebiasaan masyarakat sehingga lebih kekinian.</p>
             </div>
