@@ -26,9 +26,4 @@ class Video extends Model
         $data['created_at'] = $data['updated_at'] = \now();
         return Video::create($data);
     }
-
-    public static function getVideoById($id)
-    {
-        return Video::find($id);
-    }
 }
