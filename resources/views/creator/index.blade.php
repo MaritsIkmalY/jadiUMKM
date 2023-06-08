@@ -26,7 +26,7 @@
                 <h2 class="card-title">Pendidikan</h2>
 
                 <div class="card-actions w-full">
-                    <button class="btn btn-primary"><a href="{{ route('pendidikan') }}">Edit
+                    <button class="btn btn-primary"><a href="{{ route('pendidikan.index') }}">Edit
                             Pendidikan</a></button>
                 </div>
             </div>

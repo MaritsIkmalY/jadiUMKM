@@ -15,9 +15,4 @@ class ContentCreatorCategory extends Model
     {
         return $this->hasMany(HasCategory::class);
     }
-
-    public static function getAllCategory()
-    {
-        return ContentCreatorCategory::all();
-    }
 }

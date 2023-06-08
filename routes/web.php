@@ -45,14 +45,8 @@ Route::middleware('creator')->group(function () {
     })->name('creator.dashboard');
     Route::resource('/creator/portofolio', PortofolioController::class);
     Route::resource('/creator/skill', SkillController::class);
-
-    Route::get('/creator/pendidikan', [PendidikanController::class, 'index'])->name('pendidikan');
-    Route::get('/creator/pendidikan/create', [PendidikanController::class, 'create'])->name('pendidikan.create');
-    Route::post('/creator/pendidikan/create', [PendidikanController::class, 'store'])->name('pendidikan.store');
-    Route::get('/creator/pendidikan/{id}', [PendidikanController::class, 'edit'])->name('pendidikan.edit');
-    Route::put('/creator/pendidikan/update/{id}', [PendidikanController::class, 'update'])->name('pendidikan.update');
-    Route::get('/creator/pendidikan/delete/{id}', [PendidikanController::class, 'destroy'])->name('pendidikan.destroy');
-
+    Route::resource('/creator/pendidikan', PendidikanController::class);
+    
     Route::get('/creator/category', [CategoryController::class, 'index'])->name('kategori');
     Route::post('/creator/category/create', [CategoryController::class, 'store'])->name('kategori.store');
     Route::get('/creator/category/{id}', [CategoryController::class, 'edit'])->name('kategori.edit');
