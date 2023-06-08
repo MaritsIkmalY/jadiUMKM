@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Edukasi\Webinar\WebinarController;
 use App\Http\Controllers\Creator\Kategori\CategoryController;
-use App\Http\Controllers\Creator\PortofolioController;
+use App\Http\Controllers\Creator\Portofolio\PortofolioController;
 use App\Http\Controllers\Creator\SkillController;
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
 use App\Http\Controllers\FilterController;
