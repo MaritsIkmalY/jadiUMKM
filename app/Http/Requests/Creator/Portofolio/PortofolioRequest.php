@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Creator\Portofolio;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PortoRequest extends FormRequest
+class PortofolioRequest extends FormRequest
 {
     public function authorize(): bool
     {

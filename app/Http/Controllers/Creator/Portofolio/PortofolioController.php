@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Creator\Portofolio;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PortoRequest;
+use App\Http\Requests\Creator\Portofolio\PortofolioRequest;
 use App\Models\ContentCreatorPortofolio;
 use App\Services\CreatorService;
 use Illuminate\Contracts\View\View;
@@ -32,7 +32,7 @@ class PortofolioController extends Controller
         return view('creator.portofolio.create');
     }
 
-    public function store(PortoRequest $request): RedirectResponse
+    public function store(PortofolioRequest $request): RedirectResponse
     {
         $data = $request->validated();
         if ($request->hasFile('photo')) {
@@ -48,7 +48,7 @@ class PortofolioController extends Controller
         return view('creator.portofolio.edit', compact('portofolio'));
     }
 
-    public function update(PortoRequest $request, ContentCreatorPortofolio $portofolio): RedirectResponse
+    public function update(PortofolioRequest $request, ContentCreatorPortofolio $portofolio): RedirectResponse
     {
         $data = $request->validated();
         if ($request->hasFile('photo')) {
