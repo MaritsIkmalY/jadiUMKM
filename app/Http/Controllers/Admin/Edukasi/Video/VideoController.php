@@ -5,57 +5,42 @@ namespace App\Http\Controllers\Admin\Edukasi\Video;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Edukasi\Video\VideoRequest;
 use App\Models\Video;
-use GuzzleHttp\Promise\Create;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+
 
 class VideoController extends Controller
 {
-
-    public function index()
+    public function index(): View
     {
-        $videos = Video::getFreeVideos();
+        $videos = Video::where('is_subscribe', false)->get();
         return view('admin.videos.index', compact('videos'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('admin.videos.create');
     }
 
-
-    public function store(VideoRequest $request)
+    public function store(VideoRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-        Video::newVideo($data);
-
+        Video::create($request->validated());
         return redirect()->route('videos.index')->with('success', 'Video berhasil ditambahkan');
     }
 
-    public function show(string $id)
+    public function edit(Video $video): View
     {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        $video = Video::getVideoById($id);
         return view('admin.videos.edit', compact('video'));
     }
 
-    public function update(VideoRequest $request, string $id)
+    public function update(VideoRequest $request, Video $video): RedirectResponse
     {
-        $data = $request->validated();
-        $video = Video::getVideoById($id);
-        if ($video) {
-            $video->update($data);
-        }
+        $video->update($request->validated());
         return redirect()->route('videos.index')->with('success', 'Video berhasil diperbarui');
     }
 
-    public function destroy(string $id)
+    public function destroy(Video $video): RedirectResponse
     {
-        $video = Video::getVideoById($id);
         $video->delete();
         return redirect()->route('videos.index')->with('success', 'Video berhasil dihapus');
     }

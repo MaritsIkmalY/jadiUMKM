@@ -5,24 +5,13 @@ use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Edukasi\Webinar\WebinarController;
 use App\Http\Controllers\Creator\Kategori\CategoryController;
-use App\Http\Controllers\Creator\PortofolioController;
-use App\Http\Controllers\Creator\SkillController;
+use App\Http\Controllers\Creator\Portofolio\PortofolioController;
+use App\Http\Controllers\Creator\Skill\SkillController;
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Marketplace\Product\ProductController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', [LandingController::class, 'home'])->name('home');
 Route::get('/landing/edukasi/video', [LandingController::class, 'video'])->name('video');
@@ -56,19 +45,8 @@ Route::middleware('creator')->group(function () {
     })->name('creator.dashboard');
     Route::resource('/creator/portofolio', PortofolioController::class);
     Route::resource('/creator/skill', SkillController::class);
-
-    Route::get('/creator/pendidikan', [PendidikanController::class, 'index'])->name('pendidikan');
-    Route::get('/creator/pendidikan/create', [PendidikanController::class, 'create'])->name('pendidikan.create');
-    Route::post('/creator/pendidikan/create', [PendidikanController::class, 'store'])->name('pendidikan.store');
-    Route::get('/creator/pendidikan/{id}', [PendidikanController::class, 'edit'])->name('pendidikan.edit');
-    Route::put('/creator/pendidikan/update/{id}', [PendidikanController::class, 'update'])->name('pendidikan.update');
-    Route::get('/creator/pendidikan/delete/{id}', [PendidikanController::class, 'destroy'])->name('pendidikan.destroy');
-
-    Route::get('/creator/category', [CategoryController::class, 'index'])->name('kategori');
-    Route::post('/creator/category/create', [CategoryController::class, 'store'])->name('kategori.store');
-    Route::get('/creator/category/{id}', [CategoryController::class, 'edit'])->name('kategori.edit');
-    Route::put('/creator/category/update/{id}', [CategoryController::class, 'update'])->name('kategori.update');
-    Route::get('/creator/category/delete/{id}', [CategoryController::class, 'destroy'])->name('kategori.destroy');
+    Route::resource('/creator/pendidikan', PendidikanController::class);
+    Route::resource('/creator/category', CategoryController::class);
 });
 
 Route::middleware('admin')->group(function () {

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Edukasi\Webinar;
+namespace App\Http\Requests\Creator\Portofolio;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WebinarRequest extends FormRequest
+class PortofolioRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -16,9 +15,8 @@ class WebinarRequest extends FormRequest
     {
         return [
             'photo' => 'mimes:pdf,png,jpg,jpeg',
-            'title' => 'required',
-            'description' => 'required',
-            'link' => 'required',
+            'title' => ['required'],
+            'description' => ['nullable'],
         ];
     }
 }
