@@ -46,12 +46,7 @@ Route::middleware('creator')->group(function () {
     Route::resource('/creator/portofolio', PortofolioController::class);
     Route::resource('/creator/skill', SkillController::class);
     Route::resource('/creator/pendidikan', PendidikanController::class);
-    
-    Route::get('/creator/category', [CategoryController::class, 'index'])->name('kategori');
-    Route::post('/creator/category/create', [CategoryController::class, 'store'])->name('kategori.store');
-    Route::get('/creator/category/{id}', [CategoryController::class, 'edit'])->name('kategori.edit');
-    Route::put('/creator/category/update/{id}', [CategoryController::class, 'update'])->name('kategori.update');
-    Route::get('/creator/category/delete/{id}', [CategoryController::class, 'destroy'])->name('kategori.destroy');
+    Route::resource('/creator/category', CategoryController::class);
 });
 
 Route::middleware('admin')->group(function () {
