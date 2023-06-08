@@ -5,62 +5,61 @@ namespace App\Http\Controllers\Admin\Edukasi\Webinar;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Edukasi\Webinar\WebinarRequest;
 use App\Models\Webinar;
-use Illuminate\Http\Request;
+use App\Services\PathFileService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 class WebinarController extends Controller
 {
+    private $pathFileService;
 
-    public function index()
+    public function __construct(PathFileService $pathFileService)
     {
-        $webinar = Webinar::getWebinar();
+        $this->pathFileService = $pathFileService;
+    }
+
+    public function index(): View
+    {
+        $webinar = Webinar::where('is_done', false)->get();
         return view('admin.webinar.index', compact('webinar'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('admin.webinar.create');
     }
 
-    public function store(WebinarRequest $request)
+    public function store(WebinarRequest $request): RedirectResponse
     {
-        $filename = $request->file('photo')->getClientOriginalName();
-        $path  = $request->file('photo')->storeAs('/assets/images', $filename, 'public');
         $data = $request->validated();
-        Webinar::newWebinar($data, $path);
-
+        $path = $this->pathFileService->getPath($request->file('photo'));
+        $data['photo'] = $path;
+        Webinar::create($data);
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil ditambahkan');
     }
 
-    public function show(Webinar $webinar)
-    {
-        //
-    }
-
-    public function edit(Webinar $webinar)
+    public function edit(Webinar $webinar): View
     {
         return view('admin.webinar.edit', compact('webinar'));
     }
 
-    public function update(WebinarRequest $request, Webinar $webinar)
+    public function update(WebinarRequest $request, Webinar $webinar): RedirectResponse
     {
         $data = $request->validated();
-        if (!is_null($request->file('photo'))) {
-            $filename = $request->file('photo')->getClientOriginalName();
-            $path  = $request->file('photo')->storeAs('/assets/images', $filename, 'public');
+        if ($request->hasFile('photo')) {
+            $path = $this->pathFileService->getPath($request);
             Storage::disk('public')->delete($webinar->photo);
             $data['photo'] = $path;
         }
         $webinar->update($data);
-
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil diperbarui');
     }
 
-    public function destroy(Webinar $webinar)
+    public function destroy(Webinar $webinar):RedirectResponse
     {
         Storage::disk('public')->delete($webinar->photo);
         $webinar->delete();
-
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil dihapus');
     }
 }
