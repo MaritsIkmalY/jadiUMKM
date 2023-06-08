@@ -6,78 +6,54 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Creator\Kategori\KategoriRequest;
 use App\Models\ContentCreatorCategory;
 use App\Models\HasCategory;
-use Illuminate\Http\Request;
+use App\Services\CreatorService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private $creatorService;
+
+    public function __construct(CreatorService $creatorService)
     {
-        $kategori = HasCategory::getCreatorCategory();
-        $categories = ContentCreatorCategory::getAllCategory();
+        $this->creatorService = $creatorService;
+    }
+
+    public function index(): View
+    {
+        $creatorId = $this->creatorService->getCreatorId(Auth::user()->id);
+        $kategori = HasCategory::where('creator_id', $creatorId)->get();
+        $categories = ContentCreatorCategory::all();
         return view('creator.kategori.index', compact('kategori', 'categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(KategoriRequest $request)
+    public function store(KategoriRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        HasCategory::newCreatorCategory($data);
-
-        return redirect()->route('kategori')->with('success', 'Kategori berhasil ditambahkan');
+        $data['creator_id'] = $this->creatorService->getCreatorId(Auth::user()->id);
+        HasCategory::create($data);
+        return redirect()->route('category.index')->with('success', 'Kategori berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(string $id): View
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $kategori = HasCategory::getCreatorCategoryById($id);
-        $categories = ContentCreatorCategory::getAllCategory();
+        $kategori = HasCategory::find($id);
+        $categories = ContentCreatorCategory::all();
         return view('creator.kategori.edit', compact('kategori', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(KategoriRequest $request, string $id)
+    public function update(KategoriRequest $request, string $id): RedirectResponse
     {
-        $data = $request->validated();
-        $kategori = HasCategory::getCreatorCategoryById($id);
-        if ($kategori) {
-            $kategori->update($data);
-        }
-        return redirect()->route('kategori')->with('success', 'Kategori berhasil diperbarui');
+        $kategori = HasCategory::find($id);
+        $kategori->update($request->validated());
+        return redirect()->route('category.index')->with('success', 'Kategori berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(string $id): RedirectResponse
     {
-        $kategori = HasCategory::getCreatorCategoryById($id);
+        $kategori = HasCategory::find($id);
         $kategori->delete();
-
-        return redirect()->route('kategori')->with('success', 'Kategori berhasil dihapus');
+        return redirect()->route('category.index')->with('success', 'Kategori berhasil dihapus');
     }
 }
