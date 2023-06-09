@@ -59,7 +59,7 @@ class PortofolioController extends Controller
         return redirect()->route('portofolio.index')->with('success', 'Portofolio berhasil diedit');
     }
 
-    public function destroy(ContentCreatorPortofolio $portofolio)
+    public function destroy(ContentCreatorPortofolio $portofolio): RedirectResponse
     {
         Storage::disk('public')->delete($portofolio->photo);
         $portofolio->delete();

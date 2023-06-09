@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
-    //
     public function home()
     {
         return view('landing-page');
@@ -20,7 +19,6 @@ class LandingController extends Controller
     public function video()
     {
         $videos = Video::getFreeVideos();
-
         return view('video', compact('videos'));
     }
 
@@ -41,7 +39,7 @@ class LandingController extends Controller
         $creator = ContentCreator::find($id);
         return view('creator-detail', compact('creator'));
     }
-    
+
     public function webinar() {
         $webinar = Webinar::all();
         return view('webinar', compact('webinar'));
