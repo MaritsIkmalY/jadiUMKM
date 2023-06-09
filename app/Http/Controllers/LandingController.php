@@ -18,7 +18,7 @@ class LandingController extends Controller
 
     public function video()
     {
-        $videos = Video::getFreeVideos();
+        $videos = Video::where('is_subscribe', false)->get();
         return view('video', compact('videos'));
     }
 
