@@ -7,98 +7,65 @@ use App\Http\Requests\ProductRequest;
 use App\Models\MarketPlace;
 use App\Models\Product;
 use App\Models\User;
+use App\Services\MarketplaceService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\View\View;
-
+use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request)
-    {
-        $products = MarketPlace::getUser(Auth::user()->id)->product()->get();
+    private $marketplaceService;
 
+    public function __construct(MarketplaceService $marketplaceService)
+    {
+        $this->marketplaceService = $marketplaceService;
+    }
+
+    public function index(): View
+    {
+        $marketplaceId = $this->marketplaceService->getMarketplaceId(Auth::user()->id);
+        $products = Product::where('marketplace_id', $marketplaceId)->get();
         return view('marketplace.product.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
         return view('marketplace.product.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request): RedirectResponse
     {
-        $validatedData = $request->validated();
-        if ($request->file('photo')) {
-            $filename = basename($request->file('photo')->getClientOriginalName(), '.' . $request->file('photo')->getClientOriginalExtension());
-            $path = $request->file('photo')->storeAs('/assets/images', $filename . "-" . Auth::user()->email . "." . $request->file('photo')->getClientOriginalExtension(), 'public');
-
-            $validatedData['photo'] = $path;
+        $data = $request->validated();
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $this->marketplaceService->getPath($request);
         }
-
-        $marketplace = User::getMarketplaceId(Auth::user()->id);
-        $validatedData['marketplace_id'] = $marketplace->id;
-
-        Product::create($validatedData);
-
-        return redirect()->route('produk.index')->with('success', 'Product berhasil ditambahkan');
+        $data['marketplace_id'] = $this->marketplaceService->getMarketplaceId(Auth::user()->id);
+        Product::create($data);
+        return redirect()->route('products.index')->with('success', 'Product berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Product $product): View
     {
-        //
+        return view('marketplace.product.edit', compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): View
+    public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-        return view('marketplace.product.edit', [
-            'produk' => Product::find($id),
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(ProductRequest $request, string $id)
-    {
-        $validatedData = $request->validated();
+        $data = $request->validated();
         if ($request->file('photo')) {
-            $filename = basename($request->file('photo')->getClientOriginalName(), '.' . $request->file('photo')->getClientOriginalExtension());
-            $path = $request->file('photo')->storeAs('/assets/images', $filename . "-" . Auth::user()->email . "." . $request->file('photo')->getClientOriginalExtension(), 'public');
-            if (!is_null($request->user()->photo)) {
-                Storage::disk('public')->delete($request->user()->photo);
-            }
-            $validatedData['photo'] = $path;
+            Storage::disk('public')->delete($product);
+            $data['photo'] = $this->marketplaceService->getPath($request);
         }
-
-        Product::where('id', $id)->update($validatedData);
-
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil diedit');
+        $product->update($data);
+        return redirect()->route('products.index')->with('success', 'Produk berhasil diedit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Product $product): RedirectResponse
     {
-        Product::destroy($id);
-
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus');
+        Storage::disk('public')->delete($product->photo);
+        $product->delete();
+        return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus');
     }
 }

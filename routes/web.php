@@ -58,7 +58,7 @@ Route::middleware('marketplace')->group(function () {
     Route::get('/marketplace/home', function () {
         return view('marketplace.index');
     })->name('marketplace.dashboard');
-    Route::resource('/marketplace/produk', ProductController::class);
+    Route::resource('/marketplace/products', ProductController::class);
 });
 
 require __DIR__ . '/auth.php';

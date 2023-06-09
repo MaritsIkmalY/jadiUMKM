@@ -42,18 +42,4 @@ class ContentCreator extends Model
     {
         return $this->hasMany(ContentCreatorEducation::class, 'creator_id');
     }
-
-    public static function getContentCreatorByCategory($id)
-    {
-        $datas = [];
-        $categoryId = HasCategory::where('category_id', $id)->get();
-
-
-        foreach ($categoryId as $category) {
-            $data = ContentCreator::where('id', $category->creator_id)->first();
-            $datas[] = $data;
-        }
-
-        return $datas;
-    }
 }
