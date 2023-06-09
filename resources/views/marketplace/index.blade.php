@@ -5,7 +5,7 @@
             <div class="card-body">
                 <h2 class="card-title">Produk</h2>
                 <div class="card-actions w-full">
-                    <button class="btn btn-primary"><a href="{{ route('produk.index') }}">Lihat Produk</a></button>
+                    <button class="btn btn-primary"><a href="{{ route('products.index') }}">Lihat Produk</a></button>
                 </div>
             </div>
         </div>

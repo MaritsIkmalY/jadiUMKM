@@ -8,7 +8,7 @@
         </div>
     @endif
 
-    <a href="{{ route('produk.create') }}" class="btn btn-primary">Upload Produk</a>
+    <a href="{{ route('products.create') }}" class="btn btn-primary">Upload Produk</a>
 
     <div class="grid  grid-cols-1 sm:grid-cols-3 justify-center gap-4 mt-4">
         @foreach ($products as $item)
@@ -19,9 +19,9 @@
                     <span>Rp. {{$item->price}}</span>
                     <div class="card-actions justify-end items-center">
 
-                        <a href={{ route('produk.edit', $item->id) }} class="btn btn-primary">Edit</a>
+                        <a href={{ route('products.edit', $item->id) }} class="btn btn-primary">Edit</a>
 
-                        <form action="{{ route('produk.destroy', $item->id) }}" method="post">
+                        <form action="{{ route('products.destroy', $item->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <input type="submit" value="Hapus"

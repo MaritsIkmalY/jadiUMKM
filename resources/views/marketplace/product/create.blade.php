@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <form action="{{ route('produk.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="py-4 font-bold text-xl">Formulir Tambah Produk</div>
 
