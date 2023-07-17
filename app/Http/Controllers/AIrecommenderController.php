@@ -36,7 +36,7 @@ class AIrecommenderController extends Controller
             Ulul Albab: video, fotografi, audio
             Cahyo Arissabarno: desain, branding, penulisan, penerjemahan
 
-            berikan contoh $jenisrekom untuk UMKM $bidang dan tunjuk salah satu kreator JadiUMKM yang cocok melakukan $jenisrekom
+            berikan rekomendasi dan saran $jenisrekom untuk UMKM $bidang dan tunjuk salah satu kreator JadiUMKM yang cocok melakukan $jenisrekom tersebut
             EOT;
     }
 }
