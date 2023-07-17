@@ -5,15 +5,19 @@ use App\Http\Controllers\Admin\EdukasiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Edukasi\Webinar\WebinarController;
 use App\Http\Controllers\Creator\Kategori\CategoryController;
-use App\Http\Controllers\Creator\PortofolioController;
-use App\Http\Controllers\Creator\SkillController;
+use App\Http\Controllers\Creator\Portofolio\PortofolioController;
+use App\Http\Controllers\Creator\Skill\SkillController;
 use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Marketplace\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AIrecommenderController;
+
 Route::get('/', [LandingController::class, 'home'])->name('home');
+Route::match(['get', 'post'], 'airecommender', [AIrecommenderController::class, 'index'])->name('airecommender');
+
 Route::get('/landing/edukasi/video', [LandingController::class, 'video'])->name('video');
 
 Route::get('/landing/creator', [LandingController::class, 'creator'])->name('creator');
@@ -23,7 +27,6 @@ Route::get('/landing/creator/detail/{id}', [LandingController::class, 'creatorDe
 Route::get('/landing/creator/filter', [FilterController::class, 'getCreatorByFilter'])->name('filter');
 Route::get('/landing/katalog', [LandingController::class, 'katalog'])->name('katalog');
 Route::get('/landing/katalog/{id}', [LandingController::class, 'katalogDetail'])->name('katalog-detail');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -58,7 +61,7 @@ Route::middleware('marketplace')->group(function () {
     Route::get('/marketplace/home', function () {
         return view('marketplace.index');
     })->name('marketplace.dashboard');
-    Route::resource('/marketplace/produk', ProductController::class);
+    Route::resource('/marketplace/products', ProductController::class);
 });
 
 require __DIR__ . '/auth.php';

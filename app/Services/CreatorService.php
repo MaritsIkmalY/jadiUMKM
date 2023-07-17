@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\ContentCreator;
 
-class CreatorService
+class CreatorService extends PathFileService
 {
     public function getCreatorId(int $id): int
     {
