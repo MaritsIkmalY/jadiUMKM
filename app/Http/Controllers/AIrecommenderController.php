@@ -11,7 +11,7 @@ class AIrecommenderController extends Controller
     {
         $result = '';
 
-        if($jenisrekom = request()->input('jenisrekom') and $bidang = request()->input('bidang'))
+        if($jenisrekom = request()->input('jenisrekom') && $bidang = request()->input('bidang'))
         {
             $response = OpenAi::chat()->create([
                 'model' => 'gpt-3.5-turbo',
@@ -20,11 +20,6 @@ class AIrecommenderController extends Controller
                 ],
             ]);
             $result = $response['choices'][0]['message']['content'];
-            // $data = OpenAI::completions()->create([
-            //     'model' => 'text-davinci-003',
-            //     'prompt' => $this->generatePrompt($animal),
-            // ]);
-            // $result = $data['choices'][0]['text'];
         }
 
         return view('airecommender.index', ['result' => $result]);
