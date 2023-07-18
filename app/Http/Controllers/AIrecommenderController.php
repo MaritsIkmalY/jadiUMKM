@@ -13,7 +13,7 @@ class AIrecommenderController extends Controller
 
         if($jenisrekom = request()->input('jenisrekom') && $bidang = request()->input('bidang'))
         {
-            $response = OpenAi::chat()->create([
+            $response = OpenAI::chat()->create([
                 'model' => 'gpt-3.5-turbo',
                 'messages' => [
                     ['role' => 'user', 'content' => $this->generatePrompt($jenisrekom, $bidang)],
