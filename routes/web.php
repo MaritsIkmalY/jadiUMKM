@@ -11,9 +11,9 @@ use App\Http\Controllers\Creator\Pendidikan\PendidikanController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Marketplace\Product\ProductController;
+use App\Http\Controllers\AIrecommenderController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AIrecommenderController;
 
 Route::get('/', [LandingController::class, 'home'])->name('home');
 Route::match(['get', 'post'], 'airecommender', [AIrecommenderController::class, 'index'])->name('airecommender');

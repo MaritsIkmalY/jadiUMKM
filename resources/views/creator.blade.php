@@ -2,7 +2,7 @@
     @php
         error_reporting(0);
     @endphp
-    <h1 class="my-2 font-bold text-4xl">Content Creator</h1>
+    <h1 class="my-2 font-bold text-2xl">Content Creator</h1>
     <div>
         <form action="{{ route('filter') }}" method="get">
             @csrf
@@ -12,7 +12,7 @@
             @endforeach
         </form>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 
         @if (is_array($creators[0]) || count($creators) == 0)
             <div>
@@ -21,8 +21,6 @@
         @else
             @foreach ($creators as $creator)
             <div>
-
-            </div>
                 <a href="{{ route('creator.detail', $creator->id) }}" class="card bg-base-100 shadow-xl">
                     <figure>
                         @if (!is_null($creator->user->photo))
@@ -45,9 +43,9 @@
 
                     </div>
                 </a>
+            </div>
             @endforeach
         @endif
-
-
     </div>
+
 </x-main-layout>
