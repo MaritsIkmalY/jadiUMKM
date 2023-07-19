@@ -54,8 +54,8 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
         $data = $request->validated();
-        if ($request->file('photo')) {
-            Storage::disk('public')->delete($product);
+        if ($request->hasFile('photo')) {
+            Storage::disk('public')->delete($product->photo);
             $data['photo'] = $this->marketplaceService->getPath($request);
         }
         $product->update($data);
