@@ -1,5 +1,9 @@
 <x-app-layout>
-    <h1>Ini halaman NIB</h1>
+    @if (session()->has('success'))
+        <div class="alert alert-success my-4">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <a href="{{route('nib.create')}}" class="btn btn-primary">Buat NIB</a>
     <div class="overflow-x-auto">
         <table class="table m-auto text-center">
@@ -37,7 +41,7 @@
                         </figure>
                     </td>
                     <td>
-                        @if ($NIB->akte_perusahaan)
+                        @if (!empty($NIB->akte_perusahaan))
                             <figure>
                                 <img src="/storage/{{$NIB->akte_perusahaan}}" alt="{{$NIB->akte_perusahaan}}">
                             </figure>
@@ -46,7 +50,7 @@
                         @endif
                     </td>
                     <td>
-                        @if ($NIB->sketsa_lokasi)
+                        @if (!empty($NIB->sketsa_lokasi))
                             <figure>
                                 <img src="/storage/{{$NIB->sketsa_lokasi}}" alt="{{$NIB->sketsa_lokasi}}">
                             </figure>
@@ -54,10 +58,17 @@
                             -
                         @endif
                     </td>
-                    <td>{{$NIB->status}}</td>
+                    <td>
+                        @if ($NIB->status == false)
+                            Diproses
+                        @else
+                            Selesai
+                        @endif
+                    </td>
                     <td>
                         <a href="">Edit</a>
                         <a href="">Hapus</a>
+                        <a href="">Detail</a>
                     </td>
                     <td>
                         @if ($NIB->nib)

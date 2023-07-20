@@ -35,7 +35,7 @@ class WebinarController extends Controller
         $data = $request->validated();
         if($request->hasFile('photo'))
         {
-            $data['photo'] = $this->pathFileService->getPath($request);
+            $data['photo'] = $this->pathFileService->getPath($request->photo);
         }
         Webinar::create($data);
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil ditambahkan');
@@ -51,7 +51,7 @@ class WebinarController extends Controller
         $data = $request->validated();
         if ($request->hasFile('photo')) {
             Storage::disk('public')->delete($webinar->photo);
-            $data['photo'] = $this->pathFileService->getPath($request);
+            $data['photo'] = $this->pathFileService->getPath($request->photo);
         }
         $webinar->update($data);
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil diperbarui');

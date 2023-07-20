@@ -35,13 +35,13 @@ class NomorIndukBerusahaController extends Controller
     public function store(NibRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        if($request->hasFile(['akte_perusahaan','sketsa_lokasi']))
+        if($request->hasFile('akte_perusahaan') && $request->hasFile('sketsa_lokasi'))
         {
-            $data['akte_perusahaan'] = $this->marketplaceService->getPath($request);
-            $data['sketsa_lokasi'] = $this->marketplaceService->getPath($request);
+            $data['akte_perusahaan'] = $this->marketplaceService->getPath($request->akte_perusahaan);
+            $data['sketsa_lokasi'] = $this->marketplaceService->getPath($request->sketsa_lokasi);
         }
-        $data['ktp'] = $this->marketplaceService->getPath($request);
-        $data['npwp'] = $this->marketplaceService->getPath($request);
+        $data['ktp'] = $this->marketplaceService->getPath($request->ktp);
+        $data['npwp'] = $this->marketplaceService->getPath($request->npwp);
         $data['marketplace_id'] = $this->marketplaceService->getMarketPlaceId(Auth::user()->id);
         NomorIndukBerusaha::create($data);
         return redirect()->route('nib.index')->with('success', 'NIB berhasil diminta');
