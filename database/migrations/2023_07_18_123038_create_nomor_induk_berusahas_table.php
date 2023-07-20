@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->unsignedBigInteger('marketplace_id');
             $table->boolean('status')->default(false);
+            $table->string('nib')->default(null);
 
             $table->foreign('marketplace_id')->references('id')->on('market_places');
         });

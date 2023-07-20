@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Marketplace\NIB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Marketplace\NibRequest;
 use App\Models\NomorIndukBerusaha;
+use App\Services\MarketplaceService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +15,7 @@ class NomorIndukBerusahaController extends Controller
 {
     private $marketplaceService;
 
-    public function __construct(NomorIndukBerusaha $marketplaceService)
+    public function __construct(MarketplaceService $marketplaceService)
     {
         $this->marketplaceService = $marketplaceService;
     }

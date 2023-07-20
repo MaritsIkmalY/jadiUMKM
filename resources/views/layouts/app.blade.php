@@ -48,6 +48,36 @@
             };
             reader.readAsDataURL(input.files[0]);
         };
+        var openFile2 = function(file) {
+            var input = file.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('output2');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
+        var openFile3 = function(file) {
+            var input = file.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('output3');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
+        var openFile4 = function(file) {
+            var input = file.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('output4');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
     </script>
 </body>
 
