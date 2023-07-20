@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Marketplace\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Models\MarketPlace;
 use App\Models\Product;
-use App\Models\User;
 use App\Services\MarketplaceService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\View\View;
@@ -39,7 +36,7 @@ class ProductController extends Controller
     {
         $data = $request->validated();
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->marketplaceService->getPath($request);
+            $data['photo'] = $this->marketplaceService->getPath($request->photo);
         }
         $data['marketplace_id'] = $this->marketplaceService->getMarketplaceId(Auth::user()->id);
         Product::create($data);
@@ -56,7 +53,7 @@ class ProductController extends Controller
         $data = $request->validated();
         if ($request->hasFile('photo')) {
             Storage::disk('public')->delete($product->photo);
-            $data['photo'] = $this->marketplaceService->getPath($request);
+            $data['photo'] = $this->marketplaceService->getPath($request->photo);
         }
         $product->update($data);
         return redirect()->route('products.index')->with('success', 'Produk berhasil diedit');

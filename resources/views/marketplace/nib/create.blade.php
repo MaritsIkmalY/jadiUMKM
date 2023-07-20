@@ -29,13 +29,13 @@
         <div class="py-4">Akte Perusahaan</div>
         <img class="w-48 h-48" id="output3">
         <div class="my-4">
-            <input type="file" name="npwp" accept='image/*' onchange='openFile3(event)'
+            <input type="file" name="akte_perusahaan" accept='image/*' onchange='openFile3(event)'
                 class="file-input file-input-bordered  w-full max-w-xs" />
         </div>
         <div class="py-4">Sketsa Lokasi</div>
         <img class="w-48 h-48" id="output4">
         <div class="my-4">
-            <input type="file" name="npwp" accept='image/*' onchange='openFile4(event)'
+            <input type="file" name="sketsa_lokasi" accept='image/*' onchange='openFile4(event)'
                 class="file-input file-input-bordered  w-full max-w-xs" />
         </div>
         <input type="submit" value="Upload" class="btn btn-primary">

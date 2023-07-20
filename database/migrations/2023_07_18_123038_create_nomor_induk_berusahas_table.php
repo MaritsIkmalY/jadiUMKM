@@ -15,12 +15,12 @@ return new class extends Migration
             $table->string('ktp');
             $table->string('npwp');
             $table->string('sketsa_lokasi')->nullable();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('no_hp');
             $table->string('deskripsi');
             $table->unsignedBigInteger('marketplace_id');
             $table->boolean('status')->default(false);
-            $table->string('nib')->default(null);
+            $table->string('nib')->nullable();
 
             $table->foreign('marketplace_id')->references('id')->on('market_places');
         });
