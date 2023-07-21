@@ -66,9 +66,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="">Edit</a>
-                        <a href="">Hapus</a>
-                        <a href="">Detail</a>
+                        <a href="{{route('nib.edit', $NIB->id)}}" class="btn btn-warning">Edit</a>
+                        <form action="{{route('nib.destroy', $NIB->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" value="delete" class="btn border-none hover:bg-red-600 bg-red-600 p-4 text-white text-bold rounded-md font-bold cursor-pointer">
+                        </form>
+                        <a href="" class="btn bg-gray">Detail</a>
                     </td>
                     <td>
                         @if ($NIB->nib)
