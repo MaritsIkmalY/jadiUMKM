@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <form action="{{ route('portofolio.update', $portofolio->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
@@ -26,6 +25,5 @@
         </div>
 
         <input type="submit" value="Edit Portofolio" class="btn btn-primary">
-
     </form>
 </x-app-layout>
