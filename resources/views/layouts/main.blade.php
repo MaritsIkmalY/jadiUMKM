@@ -20,7 +20,7 @@
 <body>
     <x-navbar />
 
-    <main class="max-w-7xl m-auto p-4 min-h-screen">
+    <main>
         {{ $slot }}
     </main>
     @include('components.footer')
