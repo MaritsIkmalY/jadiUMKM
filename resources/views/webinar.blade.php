@@ -1,4 +1,5 @@
 <x-main-layout>
+<div class="max-w-7xl m-auto p-4 min-h-screen">
     <div class="grid grid-cols-1 justify-center sm:grid-cols-3 gap-4">
         @foreach ($webinar as $item)
             <div class="card card-compact bg-base-100 shadow-xl  sm:my-5 md:my-2">
@@ -14,4 +15,5 @@
             </div>
         @endforeach
     </div>
+</div>
 </x-main-layout>

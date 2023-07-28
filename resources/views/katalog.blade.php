@@ -1,4 +1,5 @@
 <x-main-layout>
+    <div  class="max-w-7xl m-auto p-4 min-h-screen">
     <div class="text-2xl font-bold mb-4">Produk Katalog</div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         @foreach ($products as $product)
@@ -13,5 +14,6 @@
                 </div>
             </a>
         @endforeach
+    </div>
     </div>
 </x-main-layout>
