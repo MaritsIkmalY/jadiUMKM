@@ -15,7 +15,7 @@ class WebinarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => 'mimes:pdf,png,jpg,jpeg',
+            'photo' => 'mimes:png,jpg,jpeg',
             'title' => 'required',
             'description' => 'required',
             'link' => 'required',

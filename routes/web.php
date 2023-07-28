@@ -12,6 +12,7 @@ use App\Http\Controllers\FilterController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Marketplace\Product\ProductController;
 use App\Http\Controllers\AIrecommenderController;
+use App\Http\Controllers\Marketplace\NIB\NomorIndukBerusahaController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -62,6 +63,7 @@ Route::middleware('marketplace')->group(function () {
         return view('marketplace.index');
     })->name('marketplace.dashboard');
     Route::resource('/marketplace/products', ProductController::class);
+    Route::resource('/marketplace/nib', NomorIndukBerusahaController::class);
 });
 
 require __DIR__ . '/auth.php';

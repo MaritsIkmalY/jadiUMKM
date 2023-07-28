@@ -36,7 +36,7 @@ class PortofolioController extends Controller
     {
         $data = $request->validated();
         if ($request->hasFile('photo')) {
-            $data['photo'] =  $this->creatorService->getPath($request);
+            $data['photo'] =  $this->creatorService->getPath($request->photo);
         }
         $data['creator_id'] = $this->creatorService->getCreatorId(Auth::user()->id);
         ContentCreatorPortofolio::create($data);
@@ -53,7 +53,7 @@ class PortofolioController extends Controller
         $data = $request->validated();
         if ($request->hasFile('photo')) {
             Storage::disk('public')->delete($portofolio->photo);
-            $data['photo'] = $this->creatorService->getPath($request);
+            $data['photo'] = $this->creatorService->getPath($request->photo);
         }
         $portofolio->update($data);
         return redirect()->route('portofolio.index')->with('success', 'Portofolio berhasil diedit');
