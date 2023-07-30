@@ -22,7 +22,7 @@ class AIrecommenderController extends Controller
             $result = $response['choices'][0]['message']['content'];
         }
 
-        return view('airecommender.index', ['result' => $result]);
+        return view('home', ['result' => $result]);
     }
 
     public function generatePrompt($jenisrekom, $bidang)

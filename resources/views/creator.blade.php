@@ -3,7 +3,7 @@
         error_reporting(0);
     @endphp
     <div  class="max-w-7xl m-auto p-4 min-h-screen">
-    <h1 class="my-2 font-bold text-2xl">Content Creator</h1>
+    <h1 class="my-2 font-bold text-2xl">Freelancer</h1>
     <div>
         <form action="{{ route('filter') }}" method="get">
             @csrf
@@ -25,7 +25,7 @@
                 <a href="{{ route('creator.detail', $creator->id) }}" class="card bg-base-100 shadow-xl">
                     <figure>
                         @if (!is_null($creator->user->photo))
-                            <img src="/storage/{{ $creator->user->photo }}" class="h-96" alt="Shoes" />
+                            <img src="/storage/{{ $creator->user->photo }}" class="h-96" style="object-fit: cover;" alt="Shoes" />
                         @else
                             <img src="/assets/images/webinar.jpg" class="h-96" alt="profile" />
                         @endif
