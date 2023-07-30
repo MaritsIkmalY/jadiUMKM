@@ -1,5 +1,5 @@
 <x-main-layout>
-    <!-- Start block -->
+
     <section class="bg-white dark:bg-gray-900" style="background-image: url('assets/images/bgumkm.jpg');">
         <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
             <div class="mr-auto place-self-center lg:col-span-7">
@@ -13,8 +13,8 @@
             </div>
         </div>
     </section>
-    <!-- End block -->
-    <!-- Start block -->
+
+
     <section class="bg-gray-50 dark:bg-gray-800" style="background-color:#f9fafb;">
         <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
             <div class="max-w-screen-sm mx-auto text-center">
@@ -47,8 +47,7 @@
             </div>
         </div>
     </section>
-    <!-- End block -->
-    <!-- Start block -->
+
     <section class="bg-white dark:bg-gray-900">
         <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6">
             <div class="max-w-screen-md mx-auto mb-8 text-center lg:mb-12">
@@ -364,6 +363,4 @@
             </figure>
         </div>
     </section>
-    <!-- End block -->
-    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 </x-main-layout>
