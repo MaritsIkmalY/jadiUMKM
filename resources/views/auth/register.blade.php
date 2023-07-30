@@ -58,9 +58,9 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ml-4">
+            <x-jadiumkm-btn class="ml-4">
                 {{ __('Register') }}
-            </x-primary-button>
+            </x-jadiumkm-btn>
         </div>
     </form>
 </x-guest-layout>
