@@ -12,20 +12,46 @@ module.exports = {
         colors: {
             unyu: "#fdf4ff",
             oyen: "#ffe5d0",
+            white: "#ffffff",
         },
         extend: {
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
         },
     },
+    daisyui: {
+        themes: [
+            {
+                mytheme: {
+                    primary: "#570df8",
+
+                    secondary: "#f000b8",
+
+                    accent: "#1dcdbc",
+
+                    neutral: "#2b3440",
+
+                    "base-100": "#ffffff",
+
+                    info: "#3abff8",
+
+                    success: "#36d399",
+
+                    warning: "#fbbd23",
+
+                    error: "#f87272",
+                },
+            },
+        ],
+    },
 
     plugins: [require("@tailwindcss/forms"), require("daisyui")],
-    variants:{
-        extend:{
-            display: ['group-focus'],
-            opacity: ['group-focus'],
-            inset: ['group-focus']
-        }
-    }
+    variants: {
+        extend: {
+            display: ["group-focus"],
+            opacity: ["group-focus"],
+            inset: ["group-focus"],
+        },
+    },
 };
