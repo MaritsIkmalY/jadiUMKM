@@ -31,8 +31,8 @@
 
         .profile img {
             display: block;
-            width: 100%;
-            height: auto;
+            width: 300px;
+            height: 300px;
             margin-bottom: 20px;
             border-radius: 50%;
             object-fit: cover;

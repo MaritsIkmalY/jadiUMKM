@@ -25,7 +25,7 @@
                 <a href="{{ route('creator.detail', $creator->id) }}" class="card bg-base-100 shadow-xl">
                     <figure>
                         @if (!is_null($creator->user->photo))
-                            <img src="/storage/{{ $creator->user->photo }}" class="h-96" alt="Shoes" />
+                            <img src="/storage/{{ $creator->user->photo }}" class="h-96" style="object-fit: cover;" alt="Shoes" />
                         @else
                             <img src="/assets/images/webinar.jpg" class="h-96" alt="profile" />
                         @endif

@@ -3,7 +3,7 @@
     <section class="bg-white dark:bg-gray-900" style="background-image: url('assets/images/bgumkm.jpg');">
         <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
             <div class="mr-auto place-self-center lg:col-span-7">
-                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Unlocking SMEs through <br> Tech Innovation.</h1>
+                <h1 class="max-w-5xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Menggali Potensi UMKM<br>Melalui Teknologi.</h1>
                 <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Kami percaya bahwa UMKM adalah salah satu kunci pertumbuhan ekonomi negara kita, kami ingin membantu Anda dalam belajar dan mengembangkan bisnis!</a>.</p>
                 <button class="bg-primary py-3 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">Mulai Sekarang</button>
             </div>
@@ -14,31 +14,42 @@
     <section class="bg-gray-50 dark:bg-gray-800" style="background-color:#f9fafb;" >
         <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
             <div class="max-w-screen-sm mx-auto text-center">
-                <h2 class="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">Mulai langkahmu sekarang</h2>
-                <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">Coba rekomendasi AI kami untuk analisa usahamu!</p>
+                <h2 class="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">Bingung dengan usahamu?</h2>
+                <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">Dapatkan rekomendasi untuk usahamu dengan fitur analisis AI kami!</p>
             </div>
 
-        <div class="flex justify-center items-center">
-            <div class="bg-white p-8 shadow-md w-9/12">
-                <form action="{{ route('airecommender') }}" method="get">
-                    @csrf
-                    <div class="mb-4">
-                        <label for="jenisrekom" class="block text-gray-700">Jenis Rekomendasi</label>
-                        <input type="text" id="jenisrekom" name="jenisrekom"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                            placeholder="desain, pemasaran, dll">
-                    </div>
-                    <div class="mb-4">
-                        <label for="bidang" class="block text-gray-700">Bidang Usaha</label>
-                        <input type="text" id="bidang" name="bidang"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                            placeholder="makanan, pakaian, dll">
-                    </div>
-                    <button class="bg-primary py-2 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">Lihat
-                        Rekomendasi</button>
-                </form>
+            <div class="flex justify-center items-center">
+                <div class="bg-white p-8 shadow-md w-9/12">
+                    <form action="{{ route('home') }}" method="get">
+                        @csrf
+                        <div class="mb-4">
+                            <label for="jenisrekom" class="block text-gray-700">Jenis Rekomendasi</label>
+                            <input type="text" id="jenisrekom" name="jenisrekom"
+                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                placeholder="desain, pemasaran, dll">
+                        </div>
+                        <div class="mb-4">
+                            <label for="bidang" class="block text-gray-700">Bidang Usaha</label>
+                            <input type="text" id="bidang" name="bidang"
+                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                placeholder="makanan, pakaian, dll">
+                        </div>
+                        <button class="bg-primary py-2 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">Lihat
+                            Rekomendasi</button>
+                    </form>
+                </div>
             </div>
-        </div>
+
+            @if ($result)
+                <div class="flex justify-center items-center">
+                    <div class="bg-white p-8 shadow-md w-9/12">
+                        <div>
+                            <a class="block text-gray-700" spellcheck="false">{{ $result }}</a>
+                            <a class="block text-gray-700 font-extrabold" spellcheck="false" href="{{ route('creator.detail', $creatorchosen) }}">Klik disini untuk hubungi freelancer -></a>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </section>
     <!-- End block -->
@@ -230,8 +241,8 @@
                                 meningkatkan ide dan solusi di ranah digital.</p>
                         </div>
                     </div>
-                </div> 
-            </div>               
+                </div>
+            </div>
         </div>
     </section>
     <!-- End block -->
@@ -241,7 +252,7 @@
             <figure class="max-w-screen-md mx-auto">
                 <svg class="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"/>
-                </svg> 
+                </svg>
                 <blockquote>
                     <p class="text-xl font-medium text-gray-900 md:text-2xl dark:text-white">"If you really look closely, most overnight successes took a long time."</p>
                 </blockquote>

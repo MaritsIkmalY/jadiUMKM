@@ -15,6 +15,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>JadiUMKM</title>
+    <link rel="icon" href="assets/images/logo.png">
 </head>
 
 <body>
