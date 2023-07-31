@@ -4,8 +4,8 @@
         <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
             <div class="mr-auto place-self-center lg:col-span-7">
                 <h1 class="max-w-5xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Menggali Potensi UMKM<br>Melalui Teknologi.</h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Kami percaya bahwa UMKM adalah salah satu kunci pertumbuhan ekonomi negara kita, kami ingin membantu Anda dalam belajar dan mengembangkan bisnis!</a>.</p>
-                <button class="bg-primary py-3 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">Mulai Sekarang</button>
+                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Partner yang tepat untuk menjadikan <span class="font-semibold">UMKM</span> mu <span class="font-semibold">Go Digital</span> untuk menjangkau pasar yang lebih luas. Tingkatkan pendapatanmu dengan <span class="font-semibold">One Stop Solution</span> dari JadiUMKM.id!</p>
+                <a class="bg-primary py-3 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="{{route('login')}}">Mulai Sekarang</a>
             </div>
         </div>
     </section>
@@ -120,7 +120,7 @@
                             <span><span class="font-semibold">Katalog UMKM</span></span>
                         </li>
                     </ul>
-                    <a href="#" class="bg-primary  py-2 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">Mulai sekarang</a>
+                    <a href="{{route('login')}}" class="bg-primary  py-2 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">Mulai sekarang</a>
                 </div>
                 <!-- Pricing Card -->
                 <div class="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
@@ -159,7 +159,8 @@
                             <span><span class="font-semibold">Katalog UMKM</span></span>
                         </li>
                     </ul>
-                    <a href="#" class="bg-primary  py-2 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">Mulai sekarang</a>
+                    <a href="{{route('login')}}
+                    ;lp bll8" class="bg-primary  py-2 px-6 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">Mulai sekarang</a>
                 </div>
             </div>
         </div>
@@ -254,12 +255,12 @@
                     <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"/>
                 </svg> 
                 <blockquote>
-                    <p class="text-xl font-medium text-gray-900 md:text-2xl dark:text-white">"If you really look closely, most overnight successes took a long time."</p>
+                    <p class="text-xl font-medium text-gray-900 md:text-2xl dark:text-white">"Keren banget, aku ga perlu pusing mikirin promosi produkku terutama ketika aku butuh jasa desain dan editing."</p>
                 </blockquote>
                 <figcaption class="flex items-center justify-center mt-6 space-x-3">
                     <div class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-                        <div class="pr-3 font-medium text-gray-900 dark:text-white">Steve Jobs</div>
-                        <div class="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">Former CEO at Apple</div>
+                        <div class="pr-3 font-medium text-gray-900 dark:text-white">Shahihul Islam</div>
+                        <div class="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">UMKM Malang</div>
                     </div>
                 </figcaption>
             </figure>
