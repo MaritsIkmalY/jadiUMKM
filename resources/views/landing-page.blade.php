@@ -20,7 +20,7 @@
 
         <div class="flex justify-center items-center">
             <div class="bg-white p-8 shadow-md w-9/12">
-                <form action="{{ route('airecommender') }}" method="get">
+                <form action="{{ route('home') }}" method="get">
                     @csrf
                     <div class="mb-4">
                         <label for="jenisrekom" class="block text-gray-700">Jenis Rekomendasi</label>
