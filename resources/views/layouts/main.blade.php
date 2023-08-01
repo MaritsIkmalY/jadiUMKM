@@ -18,7 +18,7 @@
 <body>
     <x-jadiumkm-navbar />
 
-    <div class="mt-20">
+    <div class="mt-24">
         {{ $slot }}
     </div>
 
