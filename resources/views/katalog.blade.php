@@ -9,7 +9,7 @@
                 <div class="card-body justify-between">
                     <h2 class="card-title overflow-hidden">{{ $product->title }}</h2>
                     <div class="card-actions justify-end">
-                        <span class="text-primary font-semibold">Rp. {{ $product->price }}</span>
+                        <span class="text-primary font-semibold">{{ $product->price }}</span>
                     </div>
                 </div>
             </a>

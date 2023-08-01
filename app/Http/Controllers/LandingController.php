@@ -55,16 +55,16 @@ class LandingController extends Controller
             return 2;
         }
         else if (strpos($input, 'fahmi') !== false) {
-            return 1;
+            return 3;
         }
         else if (strpos($input, 'arya') !== false) {
-            return 2;
+            return 4;
         }
         else if (strpos($input, 'ulul') !== false) {
-            return 1;
+            return 5;
         }
         else if (strpos($input, 'cahyo') !== false) {
-            return 2;
+            return 6;
         }
         return 0;
     }
