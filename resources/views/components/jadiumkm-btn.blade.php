@@ -2,14 +2,13 @@
 
 @php
     $variantClass = [
-        'primary' => 'bg-blue-500 hover:bg-blue-600 text-base-100',
-        'secondary' => 'bg-white border-[1px] border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500',
+        'primary' => 'text-white font-medium bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none dark:focus:ring-blue-800',
+        'secondary' => 'py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700',
     ];
-    $baseVariantClass = 'focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0';
 @endphp
 
 <a href="{{ $attributes->get('href') }}">
-    <button {{ $attributes->merge(['type' => 'submit', 'class' => $variantClass[$variant] . ' ' . $baseVariantClass]) }}>
+    <button {{ $attributes->merge(['type' => 'submit', 'class' => $variantClass[$variant] . ' ']) }}>
         {{ $slot }}
     </button>
 </a>
