@@ -1,19 +1,9 @@
 <x-main-layout>
-<div class="max-w-7xl m-auto p-4 min-h-screen">
-    <div class="grid grid-cols-1 justify-center sm:grid-cols-3 gap-4">
+    <x-jadiumkm-header :title="__('Webinar UMKM')" :back="__('edukasi')">
         @foreach ($webinar as $item)
-            <div class="card card-compact bg-base-100 shadow-xl  sm:my-5 md:my-2">
-                <figure class="h-96"><img src="/storage/{{ $item->photo }}" alt="{{ $item->title }}" /></figure>
-                <div class="card-body gap-4">
-                    <h2 class="card-title">{{ $item->title }}</h2>
-                    <div class="flex justify-between">
-                        <p>{{ $item->description }}</p>
-                        <div class="badge badge-secondary">Gratis</div>
-                    </div>
-                    <a class="btn btn-primary w-full" href="{{ $item->link }}" target="_blank">Ikut Webinar</a>
-                </div>
-            </div>
+            <x-jadiumkm-card title="{{ $item->title }}" src="/storage/{{ $item->photo }}" href="{{ $item->link }}"
+                body="{{ $item->description }}" />
         @endforeach
-    </div>
-</div>
+    </x-jadiumkm-header>
+
 </x-main-layout>
