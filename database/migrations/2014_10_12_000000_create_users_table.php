@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('photo')->nullable();
+            $table->string('photo')->default('/assets/images/default.jpg');
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->boolean('is_subscribe')->default(false);

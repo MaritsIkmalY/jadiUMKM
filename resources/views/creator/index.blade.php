@@ -15,7 +15,7 @@
             <div class="card-body">
                 <h2 class="card-title">Kategori</h2>
                 <div class="card-actions w-full">
-                    <button class="btn btn-primary"><a href="{{ route('kategori') }}">Edit Kategori</a></button>
+                    <button class="btn btn-primary"><a href="{{ route('category.index') }}">Edit Kategori</a></button>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 <h2 class="card-title">Pendidikan</h2>
 
                 <div class="card-actions w-full">
-                    <button class="btn btn-primary"><a href="{{ route('pendidikan') }}">Edit
+                    <button class="btn btn-primary"><a href="{{ route('pendidikan.index') }}">Edit
                             Pendidikan</a></button>
                 </div>
             </div>

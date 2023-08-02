@@ -1,5 +1,9 @@
 <x-main-layout>
-    <h1>Content Creator</h1>
+    @php
+        error_reporting(0);
+    @endphp
+    <div  class="max-w-7xl m-auto p-4 min-h-screen">
+    <h1 class="my-2 font-bold text-2xl">Content Creator</h1>
     <div>
         <form action="{{ route('filter') }}" method="get">
             @csrf
@@ -9,14 +13,15 @@
             @endforeach
         </form>
     </div>
-    <div class="grid grid-cols-3 justify-center gap-4 mt-24">
-  
-        @if (is_array($creators[0]))
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+
+        @if (is_array($creators[0]) || count($creators) == 0)
             <div>
                 Tidak ada content creator
             </div>
         @else
             @foreach ($creators as $creator)
+            <div>
                 <a href="{{ route('creator.detail', $creator->id) }}" class="card bg-base-100 shadow-xl">
                     <figure>
                         @if (!is_null($creator->user->photo))
@@ -29,7 +34,6 @@
                     <div class="card-body">
                         <h2 class="card-title">
                             {{ $creator->user->name }}
-
                         </h2>
                         <p>{{ $creator->description }}</p>
                         <div class="card-actions justify-end">
@@ -40,9 +44,10 @@
 
                     </div>
                 </a>
+            </div>
             @endforeach
         @endif
-
-
     </div>
+    </div>
+
 </x-main-layout>

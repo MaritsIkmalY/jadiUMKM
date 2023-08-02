@@ -11,7 +11,7 @@
         </div>
         <div class="divider"></div>
         @if (count($pendidikan) == 0)
-            Halo
+            Pendidikan Masih Kosong
         @else
             <div class="overflow-x-auto">
                 <table class="table-auto m-auto">
@@ -27,10 +27,12 @@
                                         class="btn btn-primary btn-xs">Edit</a>
                                 </td>
                                 <td class="border-b-2">
-                                    <a href="{{ route('pendidikan.destroy', $item->id) }}"
-                                        class="btn btn-primary btn-xs">Hapus</a>
+                                    <form action="{{route('pendidikan.destroy', $item->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="Hapus" class="btn btn-primary btn-xs">
+                                    </form>
                                 </td>
-
                             </tr>
                         </tbody>
                     @endforeach

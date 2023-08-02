@@ -31,7 +31,8 @@
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $skill->name }}</td>
                         <td class="flex gap-4">
-                            <a href="{{ route('skill.edit', $skill->id) }}" class="btn bg-yellow-500 border-none hover:bg-yellow-600">Edit</a>
+                            <a href="{{ route('skill.edit', $skill->id) }}"
+                                class="btn bg-yellow-500 border-none hover:bg-yellow-600">Edit</a>
                             <form action="{{ route('skill.destroy', $skill->id) }}" method="post">
                                 @csrf
                                 @method('delete')

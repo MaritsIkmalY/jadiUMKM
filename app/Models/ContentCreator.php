@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class ContentCreator extends Model
 {
@@ -43,18 +41,5 @@ class ContentCreator extends Model
     public function education(): HasMany
     {
         return $this->hasMany(ContentCreatorEducation::class, 'creator_id');
-    }
-
-    public static function getContentCreatorByCategory($id)
-    {
-        $data = [];
-        $categoryId = HasCategory::where('category_id', $id)->get();
-
-        foreach ($categoryId as $category) {
-
-            $data = ContentCreator::where('id', $category->creator_id)->first();
-        }
-        $datas[] = $data;
-        return $datas;
     }
 }

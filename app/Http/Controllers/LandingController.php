@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\ContentCreator;
 use App\Models\ContentCreatorCategory;
+use App\Models\Product;
 use App\Models\Video;
 use App\Models\Webinar;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
-    //
     public function home()
     {
         return view('landing-page');
@@ -18,8 +18,7 @@ class LandingController extends Controller
 
     public function video()
     {
-        $videos = Video::getFreeVideos();
-
+        $videos = Video::where('is_subscribe', false)->get();
         return view('video', compact('videos'));
     }
 
@@ -40,9 +39,19 @@ class LandingController extends Controller
         $creator = ContentCreator::find($id);
         return view('creator-detail', compact('creator'));
     }
-    
+
     public function webinar() {
         $webinar = Webinar::all();
         return view('webinar', compact('webinar'));
+    }
+
+    public function katalog() {
+        $products = Product::paginate(20);
+        return view('katalog', compact('products'));
+    }
+
+    public function katalogDetail(int $id) {
+        $product = Product::find($id);
+        return view('katalog-detail', compact('product'));
     }
 }

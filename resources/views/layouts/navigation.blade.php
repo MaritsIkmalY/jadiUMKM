@@ -5,9 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="/assets/images/logo.png" class="w-24" alt="jadiUMKM">
-                    </a>
+                    <x-application-logo/>
                 </div>
 
                 <!-- Navigation Links -->
@@ -29,6 +27,19 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('creator.dashboard')" :active="request()->routeIs('creator.dashboard')">
                             {{ __('Content Creator') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+
+                @if (Auth::user()->role_id == 4)
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('marketplace.dashboard')" :active="request()->routeIs('marketplace.dashboard')">
+                            {{ __('Katalog') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('nib.index')" :active="request()->routeIs('nib.index')">
+                            {{ __('Nomor Induk Berusaha') }}
                         </x-nav-link>
                     </div>
                 @endif
@@ -109,6 +120,19 @@
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('creator.dashboard')" :active="request()->routeIs('creator.dashboard')">
                     {{ __('Content Creator') }}
+                </x-responsive-nav-link>
+            </div>
+        @endif
+
+        @if (Auth::user()->role_id == 4)
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('marketplace.dashboard')" :active="request()->routeIs('marketplace.dashboard')">
+                    {{ __('Katalog') }}
+                </x-responsive-nav-link>
+            </div>
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('nib.index')" :active="request()->routeIs('nib.index')">
+                    {{ __('Nomor Induk Berusaha') }}
                 </x-responsive-nav-link>
             </div>
         @endif

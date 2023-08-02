@@ -5,75 +5,54 @@ namespace App\Http\Controllers\Creator\Pendidikan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Creator\Pendidikan\PendidikanRequest;
 use App\Models\ContentCreatorEducation;
-use Illuminate\Http\Request;
+use App\Services\CreatorService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class PendidikanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private $creatorService;
+
+    public function __construct(CreatorService $creatorService)
     {
-        $pendidikan = ContentCreatorEducation::getCreatorEducation();
+        $this->creatorService = $creatorService;
+    }
+
+    public function index(): View
+    {
+        $creatorId = $this->creatorService->getCreatorId(Auth::user()->id);
+        $pendidikan = ContentCreatorEducation::where('creator_id', $creatorId)->get();
         return view('creator.pendidikan.index', compact('pendidikan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
         return view('creator.pendidikan.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(PendidikanRequest $request)
+    public function store(PendidikanRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        ContentCreatorEducation::newEducation($data);
-
-        return redirect()->route('pendidikan')->with('success', 'Pendidikan berhasil ditambahkan');
+        $data['creator_id'] = $this->creatorService->getCreatorId(Auth::user()->id);
+        ContentCreatorEducation::create($data);
+        return redirect()->route('pendidikan.index')->with('success', 'Pendidikan berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(ContentCreatorEducation $pendidikan): View
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $pendidikan = ContentCreatorEducation::getEducationById($id);
         return view('creator.pendidikan.edit', compact('pendidikan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(PendidikanRequest $request, string $id)
+    public function update(PendidikanRequest $request, ContentCreatorEducation $pendidikan): RedirectResponse
     {
-        $data = $request->validated();
-        $pendidikan = ContentCreatorEducation::geteducationById($id);
-        if ($pendidikan) {
-            $pendidikan->update($data);
-        }
-        return redirect()->route('pendidikan')->with('success', 'Pendidikan berhasil diperbarui');
+        $pendidikan->update($request->validated());
+        return redirect()->route('pendidikan.index')->with('success', 'Pendidikan berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(ContentCreatorEducation $pendidikan): RedirectResponse
     {
-        $pendidikan = ContentCreatorEducation::getEducationById($id);
         $pendidikan->delete();
-        return redirect()->route('pendidikan')->with('success', 'Pendidikan berhasil dihapus');
+        return redirect()->route('pendidikan.index')->with('success', 'Pendidikan berhasil dihapus');
     }
 }

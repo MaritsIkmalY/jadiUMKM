@@ -11,7 +11,7 @@
         </div>
         <div class="divider"></div>
         @if (count($kategori) == 0)
-            Halo
+            Kategori Masih Kosong
         @else
             <div class="overflow-x-auto">
                 <table class="table-auto m-auto">
@@ -22,12 +22,15 @@
                                     <h2>{{ $item->category->name }}</h2>
                                 </td>
                                 <td class="border-b-2">
-                                    <a href="{{ route('kategori.edit', $item->id) }}"
+                                    <a href="{{ route('category.edit', $item->id) }}"
                                         class="btn btn-primary btn-xs">Edit</a>
                                 </td>
                                 <td class="border-b-2">
-                                    <a href="{{ route('kategori.destroy', $item->id) }}"
-                                        class="btn btn-primary btn-xs">Hapus</a>
+                                    <form action="{{route('category.destroy', $item->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="Hapus" class="btn btn-primary btn-xs">
+                                    </form>
                                 </td>
 
                             </tr>
@@ -43,7 +46,7 @@
     <label for="addKategori" class="modal cursor-pointer">
         <label class="modal-box relative" for="">
             <h1>Kategori</h1>
-            <form action="{{ route('kategori.store') }}" method="POST">
+            <form action="{{ route('category.store') }}" method="POST">
                 @csrf
                 <div class="mt-4">
                     <select id="kategori" class="select select-bordered w-full max-w-xs" name="category_id"

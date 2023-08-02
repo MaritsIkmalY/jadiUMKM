@@ -5,86 +5,62 @@ namespace App\Http\Controllers\Admin\Edukasi\Webinar;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Edukasi\Webinar\WebinarRequest;
 use App\Models\Webinar;
-use Illuminate\Http\Request;
+use App\Services\PathFileService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 class WebinarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private $pathFileService;
+
+    public function __construct(PathFileService $pathFileService)
     {
-        $webinar = Webinar::getWebinar();
-        return view('edukasi.webinar.index', compact('webinar'));
+        $this->pathFileService = $pathFileService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function index(): View
     {
-        return view('edukasi.webinar.create');
+        $webinar = Webinar::where('is_done', false)->get();
+        return view('admin.webinar.index', compact('webinar'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(WebinarRequest $request)
+    public function create(): View
     {
-        $filename = $request->file('photo')->getClientOriginalName();
-        $path  = $request->file('photo')->storeAs('/assets/images', $filename, 'public');
+        return view('admin.webinar.create');
+    }
+
+    public function store(WebinarRequest $request): RedirectResponse
+    {
         $data = $request->validated();
-        Webinar::newWebinar($data, $path);
-
+        if($request->hasFile('photo'))
+        {
+            $data['photo'] = $this->pathFileService->getPath($request->photo);
+        }
+        Webinar::create($data);
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Webinar $webinar): View
     {
-        //
+        return view('admin.webinar.edit', compact('webinar'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(WebinarRequest $request, Webinar $webinar): RedirectResponse
     {
-        $webinar = Webinar::getWebinarById($id);
-        return view('edukasi.webinar.edit', compact('webinar'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(WebinarRequest $request, string $id)
-    {
-        $webinar = Webinar::getWebinarById($id);
         $data = $request->validated();
-        if (!is_null($request->file('photo'))) {
-            $filename = $request->file('photo')->getClientOriginalName();
-            $path  = $request->file('photo')->storeAs('/assets/images', $filename, 'public');
+        if ($request->hasFile('photo')) {
             Storage::disk('public')->delete($webinar->photo);
-            $data['photo'] = $path;
+            $data['photo'] = $this->pathFileService->getPath($request->photo);
         }
-        if ($webinar) {
-            $webinar->update($data);
-        }
+        $webinar->update($data);
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Webinar $webinar):RedirectResponse
     {
-        $webinar = Webinar::getWebinarById($id);
         Storage::disk('public')->delete($webinar->photo);
         $webinar->delete();
-
         return redirect()->route('webinar.index')->with('success', 'Webinar berhasil dihapus');
     }
 }
