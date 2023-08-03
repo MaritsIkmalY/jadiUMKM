@@ -24,7 +24,7 @@
                     analisa usahamu!</p>
             </div>
 
-            <x-jadiumkm-airecommender method="get" />
+            <livewire:airecommender />
         </div>
     </section>
 
