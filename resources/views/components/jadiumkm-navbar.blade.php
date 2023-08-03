@@ -28,11 +28,11 @@
                 class="flex flex-col p-4 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700">
                 <x-jadiumkm-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">Home</x-jadiumkm-nav-link>
 
-                <x-jadiumkm-nav-link href="{{ route('edukasi') }}" :active="request()->routeIs('edukasi')">Edukasi</x-jadiumkm-nav-link>
+                <x-jadiumkm-nav-link href="{{ route('edukasi') }}" :active="request()->routeIs('edukasi') || Str::contains(request()->url(), '/edukasi')">Edukasi</x-jadiumkm-nav-link>
 
-                <x-jadiumkm-nav-link href="{{ route('creator') }}" :active="request()->routeIs('creator')">Freelancer</x-jadiumkm-nav-link>
+                <x-jadiumkm-nav-link href="{{ route('creator') }}" :active="request()->routeIs('creator') || Str::contains(request()->url(), '/creator')">Freelancer</x-jadiumkm-nav-link>
 
-                <x-jadiumkm-nav-link href="{{ route('katalog') }}" :active="request()->routeIs('katalog')">Katalog UMKM</x-jadiumkm-nav-link>
+                <x-jadiumkm-nav-link href="{{ route('katalog') }}" :active="request()->routeIs('katalog') || Str::contains(request()->url(), '/katalog')">Katalog UMKM</x-jadiumkm-nav-link>
 
                 <x-jadiumkm-nav-link href="{{ route('airecommender') }}" :active="request()->routeIs('airecommender')">AI
                     Recommender</x-jadiumkm-nav-link>
