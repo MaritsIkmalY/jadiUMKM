@@ -25,7 +25,15 @@
     </div>
     <div class="flex flex-col items-center pb-10">
         <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ $src }}" alt="Bonnie image" />
-        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ $name }}</h5>
+        @php
+            $displayedName = strlen($name) > 20 ? substr($name, 0, 20) . '...' : $name;
+        @endphp
+
+        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"
+            data-popover-target="{{ $id }}">{{ $displayedName }}</h5>
+
+        <x-jadiumkm-tooltip id="{{ $id }}">{{ $name }}</x-jadiumkm-tooltip>
+
         {{ $slot }}
         <span class="text-sm text-gray-500 dark:text-gray-400">{{ $desc }}</span>
         <div class="flex mt-4 space-x-3 md:mt-6">

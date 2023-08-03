@@ -147,7 +147,8 @@
 
     <div class="container">
         <div class="profile">
-            <img src="/storage/{{ $creator->user->photo }}" alt="Profile picture">
+            <img src="{{ Str::contains($creator->user->photo, 'default') ? '/assets/images/webinar.jpg' : '/storage/' . $creator->user->photo }}"
+                alt="Profile picture">
             <h2>{{ $creator->user->name }}</h2>
             <div>
                 @foreach ($creator->category as $category)
