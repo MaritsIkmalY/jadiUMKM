@@ -25,9 +25,11 @@
                     <x-jadiumkm-creator-card name="{{ $creator->user->name }}"
                         src="{{ Str::contains($creator->user->photo, 'default') ? '/assets/images/webinar.jpg' : '/storage/' . $creator->user->photo }}"
                         category="{{ $creator->category }}" desc="{{ $creator->description }}" id="{{ $creator->id }}"
+                        whatsapp="{{ $creator->user->phone }}"
+                        email="{{ $creator->user->email }}"
                         detail="creator.detail">
-                        <div class="flex items-center gap-2 flex-wrap p-2 justify-center">
-                            @foreach ($creator->category as $category)
+                        <div class="flex items-center gap-2 flex-wrap p-2 justify-center min-h-[5rem]">
+                            @foreach ($creator->category->take(2) as $category)
                                 <span
                                     class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $category->category->name }}</span>
                             @endforeach

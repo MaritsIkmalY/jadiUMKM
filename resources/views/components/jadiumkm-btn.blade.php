@@ -7,7 +7,7 @@
     ];
 @endphp
 
-<a href="{{ $attributes->get('href') }}">
+<a href="{{ $attributes->get('href') }}" target="{{ $attributes->get('target') }}">
     <button {{ $attributes->merge(['type' => 'submit', 'class' => $variantClass[$variant] . ' ']) }}>
         {{ $slot }}
     </button>
