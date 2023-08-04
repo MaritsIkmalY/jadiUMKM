@@ -3,12 +3,18 @@
     <section class="bg-white dark:bg-gray-900" style="background-image: url('assets/images/bgumkm.jpg');">
         <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
             <div class="mr-auto place-self-center lg:col-span-7">
-                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl">
-                    Unlocking SMEs through <br> Tech Innovation.</h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Kami
-                    percaya bahwa UMKM adalah salah satu kunci pertumbuhan ekonomi negara kita, kami ingin membantu Anda
-                    dalam belajar dan mengembangkan bisnis!</a>.</p>
-                <x-jadiumkm-btn>Mulai
+
+                <h1
+                    class="max-w-5xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
+                    Menggali Potensi UMKM<br>Melalui Teknologi.</h1>
+                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                    Partner yang tepat untuk menjadikan <span class="font-semibold text-gray-900">UMKM</span> mu <span
+                        class="font-semibold text-gray-900">Go Digital</span> untuk menjangkau pasar yang lebih luas.
+                    Tingkatkan
+                    pendapatanmu dengan <span class="font-semibold text-gray-900">One Stop Solution</span> dari
+                    JadiUMKM.id!</p>
+
+                <x-jadiumkm-btn href="{{ route('login') }}">Mulai
                     Sekarang</x-jadiumkm-btn>
             </div>
         </div>
