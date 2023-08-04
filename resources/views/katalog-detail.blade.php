@@ -1,33 +1,35 @@
 <x-main-layout>
-    <div class="flex flex-col gap-4 items-start">
-        <div class="mx-auto">
-            <figure class="rounded-md border">
-                <img class="rounded-md w-96" src="/storage/{{ $product->photo }}" alt="product">
+    <x-jadiumkm-header title="Detail Produk {{ $product->title }}" back="katalog">
+        <div class="flex flex-col md:flex-row justify-start items-start gap-2 flex-wrap">
+            <figure class="rounded-md border flex-1">
+                <img class="rounded-md" src="/storage/{{ $product->photo }}" alt="product">
             </figure>
-        </div>
-        <div class="flex flex-col gap-2">
-            <div>
+
+            <div class="flex flex-col gap-6 p-6">
                 <h1 class="text-2xl font-bold">{{ $product->title }}</h1>
                 {{ $product->description }}
-                <p class="text-primary font-semibold mt-2 text-xl">
-                    {{ $product->price }}
+                <p class="text-blue-600 font-semibold text-xl">
+                    Rp. {{ $product->price }}
                 </p>
-            </div>
 
+                <div class="flex items-center gap-2">
+                    <img class="w-10 h-10 rounded-full"
+                        src="{{ Str::contains($product->creator->user->photo, 'default') ? '/assets/images/webinar.jpg' : '/storage/' . $product->creator->user->photo }}"
+                        alt="Rounded avatar">
+                    <span class="text-xl font-bold">{{ $product->creator->user->name }}</span>
+                </div>
 
-            <div class="text-xl font-bold">
-                {{ $product->creator->user->name }}
-            </div>
-            <div class="text-success bg">
-                @if(is_null($product->creator->user->phone))
-                    <div class="text-bold">Nomor Belum Tersedia</div>
-                @else
-                <a href="https://wa.me/{{$product->creator->user->phone}}"
-                    class="btn btn-success" target="_blank">WhatsApp</a>
+                @if (!is_null($product->creator->user->phone))
+                    <x-jadiumkm-btn href="https://wa.me/{{ $product->creator->user->phone }}" target="_blank">Hubungi
+                        Penjual</x-jadiumkm-btn>
                 @endif
+
             </div>
+
+
         </div>
-    </div>
+
+    </x-jadiumkm-header>
 
 
 </x-main-layout>

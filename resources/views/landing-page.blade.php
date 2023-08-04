@@ -3,12 +3,18 @@
     <section class="bg-white dark:bg-gray-900" style="background-image: url('assets/images/bgumkm.jpg');">
         <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
             <div class="mr-auto place-self-center lg:col-span-7">
-                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl">
-                    Unlocking SMEs through <br> Tech Innovation.</h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Kami
-                    percaya bahwa UMKM adalah salah satu kunci pertumbuhan ekonomi negara kita, kami ingin membantu Anda
-                    dalam belajar dan mengembangkan bisnis!</a>.</p>
-                <x-jadiumkm-btn>Mulai
+
+                <h1
+                    class="max-w-5xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
+                    Menggali Potensi UMKM<br>Melalui Teknologi.</h1>
+                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                    Partner yang tepat untuk menjadikan <span class="font-semibold text-gray-900">UMKM</span> mu <span
+                        class="font-semibold text-gray-900">Go Digital</span> untuk menjangkau pasar yang lebih luas.
+                    Tingkatkan
+                    pendapatanmu dengan <span class="font-semibold text-gray-900">One Stop Solution</span> dari
+                    JadiUMKM.id!</p>
+
+                <x-jadiumkm-btn href="{{ route('login') }}">Mulai
                     Sekarang</x-jadiumkm-btn>
             </div>
         </div>
@@ -24,27 +30,7 @@
                     analisa usahamu!</p>
             </div>
 
-            <div class="flex justify-center items-center">
-                <div class="bg-white p-8 shadow-md w-9/12">
-                    <form action="{{ route('airecommender') }}" method="get">
-                        @csrf
-                        <div class="mb-4">
-                            <label for="jenisrekom" class="block text-gray-700">Jenis Rekomendasi</label>
-                            <input type="text" id="jenisrekom" name="jenisrekom"
-                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                placeholder="desain, pemasaran, dll">
-                        </div>
-                        <div class="mb-4">
-                            <label for="bidang" class="block text-gray-700">Bidang Usaha</label>
-                            <input type="text" id="bidang" name="bidang"
-                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                placeholder="makanan, pakaian, dll">
-                        </div>
-                        <x-jadiumkm-btn>Lihat
-                            Rekomendasi</x-jadiumkm-btn>
-                    </form>
-                </div>
-            </div>
+            <livewire:airecommender />
         </div>
     </section>
 
@@ -237,110 +223,18 @@
             </div>
         </div>
     </section>
-    <!-- End block -->
-    <!-- Start block -->
+
     <section class="bg-white dark:bg-gray-900">
         <div class="max-w-screen-xl px-4 pb-8 mx-auto lg:pb-24 lg:px-6 ">
             <h2
                 class="mt-10 mb-6 text-3xl font-extrabold tracking-tight text-center text-gray-900 lg:mb-8 lg:text-3xl">
                 Frequently asked questions</h2>
             <div class="max-w-screen-md mx-auto">
-                <div id="accordion-flush" data-accordion="collapse"
-                    data-active-classes="bg-white dark:bg-gray-900 text-gray-900"
-                    data-inactive-classes="text-gray-500 dark:text-gray-400">
-                    <h3 id="accordion-flush-heading-1">
-                        <button type="button"
-                            class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900"
-                            data-accordion-target="#accordion-flush-body-1" aria-expanded="true"
-                            aria-controls="accordion-flush-body-1">
-                            <span>Apa Manfaat Digitalisasi UMKM?</span>
-                            <svg data-accordion-icon="" class="w-6 h-6 rotate-180 shrink-0" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </h3>
-                    <div id="accordion-flush-body-1" class="" aria-labelledby="accordion-flush-heading-1">
-                        <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                            <p class="pt-1 font-bold">Memperluas jangkauan</p>
-                            <p>
-                                Digitalisasi UMKM memungkinkan pelaku usaha memiliki jangkauan pemasaran yang lebih luas
-                                bahkan bisa
-                                sampai ke pelosok negeri.</p>
-                            <p class="pt-1 font-bold">Meningkatkan Pendapatan</p>
-                            <p>Meningkatkan pendapatan
-                                Pastinya, semakin luas jangkauan pemasaran suatu bisnis maka penghasilan pun akan
-                                meningkat.</p>
-                            <p class="pt-1 font-bold">Mempermudah Transaksi</p>
-                            <p>
-                                Mempermudah transaksi
-                                Pembayaran digital akan memudahkan UMKM dan konsumen. Goodbye kembalian!</p>
-                            <p class="pt-1 font-bold">Mengikuti Trend</p>
-                            <p>Mengikuti trend
-                                Digitalisasi membuat UMKM beradaptasi dengan kebiasaan masyarakat sehingga lebih
-                                kekinian.</p>
-                        </div>
-                    </div>
-                    <h3 id="accordion-flush-heading-2">
-                        <button type="button"
-                            class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
-                            aria-controls="accordion-flush-body-2">
-                            <span>Bagaimana Strategi Untuk Mengembangkan Usaha Kecil Yang Dijalankan?</span>
-                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </h3>
-                    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
-                        <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                            <p>Berdasarkan informasi yang di dapatkan, ternyata sekitar 70% UKM yang ada di Indonesia
-                                memulai UKM tersebut karena adanya desakan ekonomi bukan karena mereka memiliki produk
-                                yang unik
-                                atau keterampilan pada bidang tertentu. Tentu saja kondisi ini akhirnya membuat sebagian
-                                besar dari
-                                UKM di Indonesia tidak memiliki daya saing, dimana kita ketahui bahwa untuk tetap
-                                bertahan dan
-                                berkembang di dalam dunia bisnis yang semakin ketat kita harus memiliki keterampilan,
-                                dapat bekerja
-                                secara profesional, dan mampu menciptakan inovasi-inovasi pada bisnis mereka.</p>
-                        </div>
-                    </div>
-                    <h3 id="accordion-flush-heading-3">
-                        <button type="button"
-                            class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                            data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
-                            aria-controls="accordion-flush-body-3">
-                            <span>Bagaimana Cara Membuat Konten Digital dengan Nilai Edukatif dan Menghibur secara
-                                Konsisten?</span>
-                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </h3>
-                    <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
-                        <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                            <p class="pt-4">Nilai utama dalam dunia digital adalah kreativitas, kolaborasi, dan
-                                kritis. Dengan
-                                tiga kemampuan ini, pengguna media digital dapat berkontribusi pada berbagai hal
-                                positif, seperti
-                                meningkatkan ide dan solusi di ranah digital.</p>
-                        </div>
-                    </div>
-                </div>
+                <x-jadiumkm-faq />
             </div>
         </div>
     </section>
-    <!-- End block -->
-    <!-- Start block -->
+
     <section class="bg-gray-50 dark:bg-gray-800" style="background-color:#f9fafb;">
         <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-24 lg:px-6">
             <figure class="max-w-screen-md mx-auto">

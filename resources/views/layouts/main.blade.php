@@ -11,21 +11,30 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
+<<<<<<< HEAD
     <livewire:styles>
+=======
+    @livewireStyles
+>>>>>>> ceb85d006b7a0e3aec3896fab8b8e45c7d9e62fc
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>JadiUMKM</title>
+    
 </head>
 
 <body>
     <x-jadiumkm-navbar />
 
-    <div class="mt-20">
+    <div class="mt-24">
         {{ $slot }}
     </div>
 
     <x-footer />
     
+<<<<<<< HEAD
     <livewire:scripts>
+=======
+    @livewireScripts
+>>>>>>> ceb85d006b7a0e3aec3896fab8b8e45c7d9e62fc
 </body>
 
 </html>

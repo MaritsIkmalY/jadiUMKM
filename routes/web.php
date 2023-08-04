@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [LandingController::class, 'home'])->name('home');
+Route::get("/counter", function () {
+return view('livewire.counter');
+});
 Route::match(['get', 'post'], 'airecommender', [AIrecommenderController::class, 'index'])->name('airecommender');
 
 Route::get('/landing/edukasi/video', [LandingController::class, 'video'])->name('video');

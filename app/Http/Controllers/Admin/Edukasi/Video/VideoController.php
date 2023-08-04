@@ -13,8 +13,7 @@ class VideoController extends Controller
 {
     public function index(): View
     {
-        $videos = Video::where('is_subscribe', false)->get();
-        return view('admin.videos.index', compact('videos'));
+        return view('admin.videos.index');
     }
 
     public function create(): View
