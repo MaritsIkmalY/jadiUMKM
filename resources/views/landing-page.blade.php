@@ -30,7 +30,7 @@
                     analisa usahamu!</p>
             </div>
 
-            <livewire:airecommender />
+            @livewire('airecommender')
         </div>
     </section>
 
