@@ -14,7 +14,7 @@
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>JadiUMKM</title>
-    
+
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     </div>
 
     <x-footer />
-    
+
     <livewire:scripts>
 </body>
 

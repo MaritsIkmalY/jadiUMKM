@@ -7,7 +7,7 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 class AIrecommenderController extends Controller
 {
-    public function index(): View
+    public function index() : View
     {
         $result = '';
 
