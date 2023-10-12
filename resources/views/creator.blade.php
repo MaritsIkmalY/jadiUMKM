@@ -2,52 +2,43 @@
     @php
         error_reporting(0);
     @endphp
-    <div  class="max-w-7xl m-auto p-4 min-h-screen">
-    <h1 class="my-2 font-bold text-2xl">Content Creator</h1>
-    <div>
-        <form action="{{ route('filter') }}" method="get">
-            @csrf
-            <button class="btn btn-primary" value="0" name="id">semua</button>
-            @foreach ($categories as $category)
-                <button value="{{ $category->id }}" class="btn btn-primary" name="id">{{ $category->name }}</button>
-            @endforeach
-        </form>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+    <x-jadiumkm-header title="Konten Kreator / Freelancer" isBack="{{ false }}">
+        <div class="flex items-center flex-wrap">
+            <form action="{{ route('filter') }}" method="get">
+                @csrf
+                <x-jadiumkm-btn variant="{{ request()->get('id') == 0 ? 'primary' : 'secondary' }}" value="0"
+                    name="id">Semua</x-jadiumkm-btn>
+                @foreach ($categories as $category)
+                    <x-jadiumkm-btn variant="{{ request()->get('id') == $category->id ? 'primary' : 'secondary' }}"
+                        value="{{ $category->id }}" name="id">{{ $category->name }}</x-jadiumkm-btn>
+                @endforeach
+            </form>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 
-        @if (is_array($creators[0]) || count($creators) == 0)
-            <div>
-                Tidak ada content creator
-            </div>
-        @else
-            @foreach ($creators as $creator)
-            <div>
-                <a href="{{ route('creator.detail', $creator->id) }}" class="card bg-base-100 shadow-xl">
-                    <figure>
-                        @if (!is_null($creator->user->photo))
-                            <img src="/storage/{{ $creator->user->photo }}" class="h-96" style="object-fit: cover;" alt="Shoes" />
-                        @else
-                            <img src="/assets/images/webinar.jpg" class="h-96" alt="profile" />
-                        @endif
-                    </figure>
-
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            {{ $creator->user->name }}
-                        </h2>
-                        <p>{{ $creator->description }}</p>
-                        <div class="card-actions justify-end">
-                            @foreach ($creator->category as $category)
-                                <div class="badge badge-outline">{{ $category->category->name }}</div>
+            @if (is_array($creators[0]) || count($creators) == 0)
+                <div>
+                    Tidak ada content creator
+                </div>
+            @else
+                @foreach ($creators as $creator)
+                    <x-jadiumkm-creator-card name="{{ $creator->user->name }}"
+                        src="{{ Str::contains($creator->user->photo, 'default') ? '/assets/images/webinar.jpg' : '/storage/' . $creator->user->photo }}"
+                        category="{{ $creator->category }}" desc="{{ $creator->description }}" id="{{ $creator->id }}"
+                        whatsapp="{{ $creator->user->phone }}"
+                        email="{{ $creator->user->email }}"
+                        detail="creator.detail">
+                        <div class="flex items-center gap-2 flex-wrap p-2 justify-center min-h-[5rem]">
+                            @foreach ($creator->category->take(2) as $category)
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $category->category->name }}</span>
                             @endforeach
                         </div>
 
-                    </div>
-                </a>
-            </div>
-            @endforeach
-        @endif
-    </div>
-    </div>
+                    </x-jadiumkm-creator-card>
+                @endforeach
+            @endif
+        </div>
+    </x-jadiumkm-header>
 
 </x-main-layout>

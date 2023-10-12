@@ -3,7 +3,6 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
         }
 
         .container {
@@ -31,10 +30,8 @@
 
         .profile img {
             display: block;
-            width: 300px;
-            height: 300px;
             margin-bottom: 20px;
-            border-radius: 50%;
+            border-radius: 100%;
             object-fit: cover;
             object-position: center;
         }
@@ -48,7 +45,6 @@
         .profile p {
             font-size: 16px;
             line-height: 24px;
-            margin-bottom: 20px;
         }
 
         .profile ul {
@@ -145,45 +141,62 @@
         }
     </style>
 
-    <div class="container">
-        <div class="profile">
-            <img src="/storage/{{ $creator->user->photo }}" alt="Profile picture">
-            <h2>{{ $creator->user->name }}</h2>
-            <div>
-                @foreach ($creator->category as $category)
-                    <div class="badge badge-outline">{{ $category->category->name }}</div>
-                @endforeach
-            </div>
-            <div class="flex gap-4 flex-col my-2">
-                {{ $creator->user->address }}
-                <div class="flex flex-wrap gap-4 items-center">
-                    @foreach ($creator->skill as $skill)
-                        <div class="badge badge-primary">{{ $skill->name }}</div>
+    <x-jadiumkm-header title="Detail Kreator {{ $creator->user->name }}" back="creator">
+        <div class="container">
+            <div class="profile">
+                <img src="{{ Str::contains($creator->user->photo, 'default') ? '/assets/images/webinar.jpg' : '/storage/' . $creator->user->photo }}"
+                    alt="Profile picture">
+                <h2>{{ $creator->user->name }}</h2>
+
+                <p class="font-semibold mb-4">Kategori</p>
+                <div class="flex flex-wrap gap-2">
+                    @foreach ($creator->category as $category)
+                        <span
+                            class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $category->category->name }}</span>
                     @endforeach
                 </div>
-                <div class="flex flex-wrap gap-4 items-center">
-                    @foreach ($creator->education as $education)
-                        <div class="badge badge-primary">{{ $education->name }}</div>
-                    @endforeach
-                </div>
+                <div class="flex gap-4 flex-col my-2">
 
-                <a target="_blank" href="https://wa.me/{{ $creator->user->phone }}" class="btn btn-primary">Chat dan
-                    Negosiasi</a>
-            </div>
-        </div>
+                    <p class="font-semibold mt-4">
+                        Alamat
+                    </p>
+                    <p>
+                        {{ $creator->user->address }}
+                    </p>
 
-        <div class="portfolio flex flex-col gap-4 ">
-            <h1 class="text-3xl font-bold text-center ml-4">Portofolio</h1>
-            <div class="grid grid-cols-1 justify-center gap-4 sm:grid-cols-2">
-                @foreach ($creator->portofolio as $portofolio)
-                    <div class="card">
-                        <img src="/storage/{{ $portofolio->photo }}" alt="{{ $portofolio->photo }}">
-                        <h3>{{ $portofolio->title }}</h3>
-                        <p>{{ $portofolio->description }}</p>
+                    <p class="font-semibold">Keahlian</p>
+                    <div class="flex flex-wrap gap-4 items-center">
+                        @foreach ($creator->skill as $skill)
+                            <span
+                                class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $skill->name }}</span>
+                        @endforeach
                     </div>
-                @endforeach
+                    <div class="flex flex-wrap gap-4 items-center">
+                        @foreach ($creator->education as $education)
+                            <div class="badge badge-primary">{{ $education->name }}</div>
+                        @endforeach
+                    </div>
+
+                    <x-jadiumkm-btn target="_blank" href="https://wa.me/{{ $creator->user->phone }}">Chat dan
+                        Negosiasi</x-jadiumkm-btn>
+                </div>
+            </div>
+
+            <div class="portfolio flex flex-col gap-4 ">
+                <h1 class="text-3xl font-bold text-center ml-4">Portofolio</h1>
+                <div class="grid grid-cols-1 justify-center gap-4 sm:grid-cols-2">
+                    @foreach ($creator->portofolio as $portofolio)
+                        <div class="card">
+                            <img src="/storage/{{ $portofolio->photo }}" alt="{{ $portofolio->photo }}">
+                            <h3>{{ $portofolio->title }}</h3>
+                            <p>{{ $portofolio->description }}</p>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
+    </x-jadiumkm-header>
+
+
 
 </x-main-layout>

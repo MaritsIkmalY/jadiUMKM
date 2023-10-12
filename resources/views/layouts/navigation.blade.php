@@ -5,9 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="/assets/images/logo.png" class="w-24" alt="jadiUMKM">
-                    </a>
+                    <x-application-logo/>
                 </div>
 
                 <!-- Navigation Links -->
