@@ -13,6 +13,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Marketplace\Product\ProductController;
 use App\Http\Controllers\AIrecommenderController;
 use App\Http\Controllers\Marketplace\NIB\NomorIndukBerusahaController;
+use App\Http\Livewire\Airecommender;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,8 +21,9 @@ Route::get('/', [LandingController::class, 'home'])->name('home');
 Route::get("/counter", function () {
 return view('livewire.counter');
 });
-Route::match(['get', 'post'], 'airecommender', [AIrecommenderController::class, 'index'])->name('airecommender');
+// Route::match(['get', 'post'], 'airecommender', [AIrecommenderController::class, 'index'])->name('airecommender');
 
+Route::get('/airecommender', Airecommender::class)->name('airecommender');
 Route::get('/landing/edukasi/video', [LandingController::class, 'video'])->name('video');
 
 Route::get('/landing/creator', [LandingController::class, 'creator'])->name('creator');
